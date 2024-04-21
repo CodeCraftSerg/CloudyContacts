@@ -1,7 +1,0 @@
-﻿Структура проекту
-- app_main (чи app_assistant) - включає новини і погоду
-- app_contacts
-- app_notes (окремо чи ні від контактів?)
-- app_download
-- app_sort
-- users
