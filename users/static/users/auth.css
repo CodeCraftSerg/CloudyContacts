@@ -103,13 +103,15 @@ body {
     left: calc(calc(calc(100% / 3) * 2) + calc(calc(100% / 3) / 3));
 }
 
-.form.signin .form-elements > div:nth-child(3) {
+.form.signin .form-elements > div:nth-child(2),
+.form.signin .form-elements > div:nth-child(4) {
     height: 0px;
     opacity: 0;
 }
 
-.form.reset .form-elements > div:nth-child(2),
-.form.reset .form-elements > div:nth-child(3) {
+.form.reset .form-elements > div:nth-child(1),
+.form.reset .form-elements > div:nth-child(3),
+.form.reset .form-elements > div:nth-child(4) {
     height: 0px;
     opacity: 0;
 }

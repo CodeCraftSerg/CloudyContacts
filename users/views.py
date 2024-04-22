@@ -6,7 +6,7 @@ from .forms import RegisterForm
 
 
 class RegisterView(View):
-    template_name = "users/register.html"
+    template_name = "users/auth.html"
     form_class = RegisterForm
 
     # def dispatch(self, request, *args, **kwargs):
