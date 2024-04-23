@@ -54,6 +54,16 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+app_contacts/migrations
+app_download/migrations
+app_main/migrations
+app_notes/migrations
+app_sort/migrations
+users/migrations
+postgres-data
+poetry.lock
+pyproject.toml
+docker-compose.yml
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
