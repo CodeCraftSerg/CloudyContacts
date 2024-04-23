@@ -3,6 +3,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from app_contacts.models import Contact
 
+"""
+Basic models for notes and tags
+"""
 
 class Note(models.Model):
     title = models.CharField(max_length=20)

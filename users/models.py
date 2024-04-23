@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+"""
+Basic models for users widgets
+"""
 
 class Widget(models.Model):
     sport = models.URLField()
