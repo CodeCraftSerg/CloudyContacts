@@ -6,10 +6,10 @@ authors = ["Serg <https://github.com/CodeCraftSerg>", "Olha <https://github.com/
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.10"
 black = "^24.4.0"
 django = "^5.0.4"
-psycopg2 = "^2.9.9"
+psycopg2-binary = "^2.9.9"
 django-environ = "^0.11.2"
 environ = "^1.0"
 gunicorn = "^22.0.0"
