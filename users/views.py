@@ -9,10 +9,10 @@ class RegisterView(View):
     template_name = "users/signup.html"
     form_class = RegisterForm
 
-    # def dispatch(self, request, *args, **kwargs):
-    #     if request.user.is_authenticated:
-    #         return redirect(to="app_main:root")
-    #     return super().dispatch(request, *args, **kwargs)
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect(to="app_main:root")
+        return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
         return render(request, self.template_name, {"form": self.form_class()})
@@ -25,5 +25,5 @@ class RegisterView(View):
             messages.success(
                 request, f"Hello {username}! You account has been created!"
             )
-            return redirect(to="app_main/signin.html")
+            return redirect(to="users/signin.html")
         return render(request, self.template_name, {"form": form})

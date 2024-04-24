@@ -1,54 +1,65 @@
-<div class="inner">
-    <h2>Sign Up</h2>
-    <div class="split style1">
-        <section>
-            {% if form.errors and form.non_field_errors %}
-            <div class="alert alert-danger" role="alert">
-                {{ form.non_field_errors }}
-            </div>
-            {% endif %}
-            <form method="post">
-                {% csrf_token %}
-                <div class="fields">
-                    <ul style="list-style: none;">
-                        <li>
-                            <div class="field half">
-                                <p></p>
-                                <label for="username">Username</label>
-                                <input type="text" name="username" id="username" value="{{ form.username }}"/>
-                                <span>{{ form.errors.username }}</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="field half">
-                                <p></p>
-                                <label for="email">Email</label>
-                                <input type="email" name="email" id="email" value="{{ form.email }}"/>
-                                <span>{{ form.errors.email }}</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="field half">
-                                <p></p>
-                                <label for="password1">Password</label>
-                                <input type="password" name="password1" id="password1" value="{{ form.password1 }}"/>
-                                <span>{{ form.errors.password1 }}</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="field half">
-                                <p></p>
-                                <label for="password2">Confirm password</label>
-                                <input type="password" name="password2" id="password2" value="{{ form.password2 }}"/>
-                                <span>{{ form.errors.password2 }}</span>
-                            </div>
-                        </li>
-                    </ul>
+{% extends 'app_main/base.html' %}
+
+{% block four %}
+{% load static %}
+
+<section id="four" class="wrapper style1 fade-up">
+    <div class="inner">
+        <h2>Sign Up</h2>
+        <div class="split style1">
+            <section>
+                {% if form.errors and form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ form.non_field_errors }}
                 </div>
-                <ul class="actions">
-                    <button type="submit" class="button submit">Submit</button>
-                </ul>
-            </form>
-        </section>
+                {% endif %}
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="fields">
+                        <ul style="list-style: none;">
+                            <li>
+                                <div class="field half">
+                                    <p></p>
+                                    <label class="form-label">Username</label>
+                                    {{ form.username }}
+                                    <span>{{ form.errors.username }}</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="field half">
+                                    <p></p>
+                                    <label class="form-label">Email</label>
+                                    {{ form.email }}
+                                    <span>{{ form.errors.email }}</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="field half">
+                                    <p></p>
+                                    <label class="form-label">Password</label>
+                                    {{ form.password1 }}
+                                    <span>{{ form.errors.password1 }}</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="field half">
+                                    <p></p>
+                                    <label class="form-label">Confirm password</label>
+                                    {{ form.password2 }}
+                                    <span>{{ form.errors.password2 }}</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="actions">
+                        <button type="submit" class="button submit">Submit</button>
+                    </ul>
+                    <p class="signin">Already have an account ? <a href="{% url 'users:signin' %}">Sign In</a></p>
+                    <p class="signin">Back to the <a href="/">start</a></p>
+                </form>
+            </section>
+        </div>
     </div>
-</div>
+</section>
+
+{% endblock %}

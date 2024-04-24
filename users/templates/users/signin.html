@@ -1,44 +1,53 @@
-<div class="inner">
-    <h2>Sign In</h2>
-    <div class="split style1">
-        <section>
-            {% if form.errors and form.non_field_errors %}
-            <div class="alert alert-danger" role="alert">
-                {{ form.non_field_errors }}
-            </div>
-            {% endif %}
-            <form method="post">
-                {% csrf_token %}
-                <div class="fields">
-                    <ul style="list-style: none;">
-                        <li>
-                            <div class="field half">
-                                <p></p>
-                                <label for="username">Username</label>
-                                <input type="text" name="username" id="username" value="{{ form.username }}"/>
-                                <span>{{ form.errors.username }}</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="field half">
-                                <p></p>
-                                <label for="password">Password</label>
-                                <input type="password" name="password" id="password" value="{{ form.password }}"/>
-                                <span>{{ form.errors.password }}</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="small text-left">
-                                <p></p>
-                                <a href="#" class="text-center"><i>Forgot Password?</i></a>
-                            </div>
-                        </li>
-                    </ul>
+{% extends 'app_main/base.html' %}
+
+{% block three %}
+{% load static %}
+
+<section id="three" class="wrapper style1 fade-up">
+    <div class="inner">
+        <h2>Sign In</h2>
+        <div class="split style1">
+            <section>
+                {% if form.errors and form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ form.non_field_errors }}
                 </div>
-                <ul class="actions">
-                    <li><a href="" class="button submit">Submit</a></li>
-                </ul>
-            </form>
-        </section>
+                {% endif %}
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="fields">
+                        <ul style="list-style: none;">
+                            <li>
+                                <div class="field half">
+                                    <p></p>
+                                    <label class="form-label">Username</label>
+                                    {{ form.username }}
+                                    <span>{{ form.errors.username }}</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="field half">
+                                    <p></p>
+                                    <label class="form-label">Password</label>
+                                    {{ form.password }}
+                                    <span>{{ form.errors.password }}</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="small text-left">
+                                    <p></p>
+                                    <a href="#" class="text-center"><i>Forgot Password?</i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="actions">
+                        <li><a href="" class="button submit">Submit</a></li>
+                    </ul>
+                </form>
+            </section>
+        </div>
     </div>
-</div>
+</section>
+
+{% endblock %}

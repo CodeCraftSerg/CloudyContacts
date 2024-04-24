@@ -17,19 +17,53 @@
     <div class="inner">
         <nav>
             <ul>
-                <li><a href="#intro">Welcome</a></li>
+                {% if user.is_authenticated %}
+                {% csrf_token %}
+                <li><a href="{% url 'app_main:root' %}">Welcome</a></li>
+                <li><a href="{% url 'users:signout' %}">Sign Out</a></li>
+                {% else %}
+                <li><a href="{% url 'app_main:root' %}">Welcome</a></li>
                 <li><a href="#one">Who we are</a></li>
                 <li><a href="#two">What we do</a></li>
-                <li><a href="#three">Sign In</a></li>
-                <li><a href="#four">Sign Up</a></li>
-                <li><a href="#five">Sign Out</a></li>
+                <li><a href="{% url 'users:signin' %}">Sign In</a></li>
+                <li><a href="{% url 'users:signup' %}">Sign Up</a></li>
+                {% endif %}
             </ul>
         </nav>
     </div>
 </section>
 
-{% block content %}
-{% endblock %}
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Intro -->
+    {% block intro %}
+    {% endblock %}
+
+    <!-- One -->
+    {% block one %}
+    {% endblock %}
+
+
+    <!-- Two -->
+    {% block two %}
+    {% endblock %}
+
+    <!-- Three -->
+    {% block three %}
+    {% endblock %}
+
+    <!-- Four -->
+    {% block four %}
+    {% endblock %}
+
+
+    <!-- Five -->
+    {% block five %}
+    {% endblock %}
+
+
+</div>
 
 <!-- Footer -->
 <footer id="footer" class="wrapper style1-alt">
