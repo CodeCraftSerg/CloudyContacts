@@ -1,10 +1,11 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>Hyperspace by HTML5 UP</title>
+    <title>Cloudy Contacts</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'app_main/images/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'app_main/css/main.css' %}"/>
     <noscript>
         <link rel="stylesheet" href="{% static 'app_main/css/noscript.css' %}"/>
@@ -20,6 +21,10 @@
                 {% if user.is_authenticated %}
                 {% csrf_token %}
                 <li><a href="{% url 'app_main:root' %}">Welcome</a></li>
+                <li><a href="{% url 'app_contacts:contacts' %}">Contacts</a></li>
+                <li><a href="{% url 'app_notes:notes' %}">Notes</a></li>
+                <li><a href="{% url 'app_download:download' %}">Download</a></li>
+                <li><a href="{% url 'app_sort:sort' %}">Sort</a></li>
                 <li>
                     <form method="post" action="{% url 'users:signout' %}">
                         {% csrf_token %}
@@ -64,6 +69,22 @@
 
     <!-- Five -->
     {% block five %}
+    {% endblock %}
+
+    <!-- Contacts -->
+    {% block contacts %}
+    {% endblock %}
+
+    <!-- Notes -->
+    {% block notes %}
+    {% endblock %}
+
+    <!-- Download -->
+    {% block download %}
+    {% endblock %}
+
+    <!-- Sort -->
+    {% block sort %}
     {% endblock %}
 
 </div>
