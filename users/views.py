@@ -25,5 +25,5 @@ class RegisterView(View):
             messages.success(
                 request, f"Hello {username}! You account has been created!"
             )
-            return redirect(to="users/signin.html")
+            return redirect(to="users:signin")
         return render(request, self.template_name, {"form": form})

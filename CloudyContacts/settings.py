@@ -149,7 +149,7 @@ STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-LOGIN_URL = "users/signin"
+LOGIN_URL = "/users/signin"
 LOGIN_REDIRECT_URL = "/"
 
 # Default primary key field type
