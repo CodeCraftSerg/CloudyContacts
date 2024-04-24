@@ -6,7 +6,7 @@ from .forms import RegisterForm
 
 
 class RegisterView(View):
-    template_name = "users/auth.html"
+    template_name = "users/signup.html"
     form_class = RegisterForm
 
     # def dispatch(self, request, *args, **kwargs):
@@ -21,7 +21,9 @@ class RegisterView(View):
         form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
-            email = form.cleaned_data["email"]
-            messages.success(request, f"Hello {email}! You account has been created!")
-            return redirect(to="users:login")
+            username = form.cleaned_data["username"]
+            messages.success(
+                request, f"Hello {username}! You account has been created!"
+            )
+            return redirect(to="app_main/signin.html")
         return render(request, self.template_name, {"form": form})

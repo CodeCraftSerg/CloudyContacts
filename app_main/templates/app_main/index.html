@@ -2,209 +2,134 @@
 
 {% block content %}
 {% load static %}
-<div class="container-fluid tm-content-container">
-    <ul class="cd-hero-slider mb-0 py-5">
-        <li class="px-3" data-page-no="1">
-            <div class="page-width-1 page-left">
-                <div class="d-flex position-relative tm-border-top tm-border-bottom intro-container">
-                    <div class="intro-left tm-bg-dark">
-                        <h2 class="mb-4">Welcome to Cloudy Contacts</h2>
-                        <p class="mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-                        <p class="mb-0">
-                            Web Application Cloudy Contacts </p>
-                    </div>
-                    <div class="intro-right">
-                        <img src="{% static 'app_main/img/home-img-1.jpg' %}" alt="Image" class="img-fluid intro-img-1">
-                        <img src="{% static 'app_main/img/home-img-2.jpg' %}" alt="Image" class="img-fluid intro-img-2">
-                    </div>
-                    <div class="circle intro-circle-1"></div>
-                    <div class="circle intro-circle-2"></div>
-                    <div class="circle intro-circle-3"></div>
-                    <div class="circle intro-circle-4"></div>
-                </div>
-                <div class="text-center">
-                    <a href="#0" data-page-no="2" class="btn btn-primary tm-intro-btn tm-page-link">
-                        About Team
-                    </a>
-                </div>
-            </div>
-        </li>
-        <li data-page-no="2">
-            <!-- Image Carousel -->
-            <div class="mx-auto position-relative gallery-container">
-                <div class="circle intro-circle-1"></div>
-                <div class="circle intro-circle-2"></div>
-                <div class="mx-auto tm-border-top gallery-slider">
-                    <figure class="effect-cloudy item">
-                        <img src="{% static 'app_main/img/gallery-img-01.jpg' %}" alt="Image">
-                        <figcaption>
-                            <div>
-                                <p>Description of the image</p>
-                            </div>
-                            <a href="#">View more</a>
-                        </figcaption>
-                    </figure>
-                    <figure class="effect-cloudy item">
-                        <img src="{% static 'app_main/img/gallery-img-02.jpg' %}" alt="Image">
-                        <figcaption>
-                            <div>
-                                <p>Description of the image</p>
-                            </div>
-                            <a href="#">View more</a>
-                        </figcaption>
-                    </figure>
-                    <figure class="effect-cloudy item">
-                        <img src="{% static 'app_main/img/gallery-img-03.jpg' %}" alt="Image">
-                        <figcaption>
-                            <div>
-                                <p>Description of the image</p>
-                            </div>
-                            <a href="#">View more</a>
-                        </figcaption>
-                    </figure>
-                    <figure class="effect-cloudy item">
-                        <img src="{% static 'app_main/img/gallery-img-04.jpg' %}" alt="Image">
-                        <figcaption>
-                            <div>
-                                <p>Description of the image</p>
-                            </div>
-                            <a href="#">View more</a>
-                        </figcaption>
-                    </figure>
-                    <figure class="effect-cloudy item">
-                        <img src="{% static 'app_main/img/gallery-img-05.jpg' %}" alt="Image">
-                        <figcaption>
-                            <div>
-                                <p>Description of the image</p>
-                            </div>
-                            <a href="#">View more</a>
-                        </figcaption>
-                    </figure>
-                    <figure class="effect-cloudy item">
-                        <img src="{% static 'app_main/img/gallery-img-06.jpg' %}" alt="Image">
-                        <figcaption>
-                            <div>
-                                <p>Description of the image</p>
-                            </div>
-                            <a href="#">View more</a>
-                        </figcaption>
-                    </figure>
-                    <figure class="effect-cloudy item">
-                        <img src="{% static 'app_main/img/gallery-img-07.jpg' %}" alt="Image">
-                        <figcaption>
-                            <div>
-                                <p>Description of the image</p>
-                            </div>
-                            <a href="#">View more</a>
-                        </figcaption>
-                    </figure>
-                    <figure class="effect-cloudy item">
-                        <img src="{% static 'app_main/img/gallery-img-08.jpg' %}" alt="Image">
-                        <figcaption>
-                            <div>
-                                <p>Description of the image</p>
-                            </div>
-                            <a href="#">View more</a>
-                        </figcaption>
-                    </figure>
-                    <figure class="effect-cloudy item">
-                        <img src="{% static 'app_main/img/gallery-img-09.jpg' %}" alt="Image">
-                        <figcaption>
-                            <div>
-                                <p>Description of the image</p>
-                            </div>
-                            <a href="#">View more</a>
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>
-        </li>
-        <li data-page-no="3" class="px-3">
-            <div class="position-relative page-width-1 page-right tm-border-top tm-border-bottom">
-                <div class="circle intro-circle-1"></div>
-                <div class="circle intro-circle-2"></div>
-                <div class="circle intro-circle-3"></div>
-                <div class="circle intro-circle-4"></div>
-                <div class="tm-bg-dark content-pad">
 
-                    {% include "users/auth.html" %}
+<!-- Wrapper -->
+<div id="wrapper">
 
+    <!-- Intro -->
+    <section id="intro" class="wrapper style1 fullscreen fade-up">
+        <div class="inner">
+            <h1>Hyperspace</h1>
+            <p>Just another fine responsive site template designed by <a href="http://html5up.net">HTML5 UP</a><br/>
+                and released for free under the <a href="http://html5up.net/license">Creative Commons</a>.</p>
+            <ul class="actions">
+                <li><a href="#one" class="button scrolly">Learn more</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- One -->
+    <section id="one" class="wrapper style2 spotlights">
+        <section>
+            <a href="#" class="image"><img src="{% static 'app_main/images/pic01.jpg' %}" alt=""
+                                           data-position="center center"/></a>
+            <div class="content">
+                <div class="inner">
+                    <h2>Sed ipsum dolor</h2>
+                    <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat
+                        malesuada quis. Aliquam dapibus.</p>
+                    <ul class="actions">
+                        <li><a href="generic.html" class="button">Learn more</a></li>
+                    </ul>
                 </div>
             </div>
-        </li>
-        <li data-page-no="4">
-            <div class="mx-auto page-width-2">
-                <div class="row">
-                    <div class="col-md-6 me-0 ms-auto">
-                        <h2 class="mb-4">Contact Us</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 tm-contact-left">
-                        <form action="#" method="POST" class="contact-form">
-                            <div class="input-group tm-mb-30">
-                                <input name="name" type="text"
-                                       class="form-control rounded-0 border-top-0 border-end-0 border-start-0"
-                                       placeholder="Name">
-                            </div>
-                            <div class="input-group tm-mb-30">
-                                <input name="email" type="text"
-                                       class="form-control rounded-0 border-top-0 border-end-0 border-start-0"
-                                       placeholder="Email">
-                            </div>
-                            <div class="input-group tm-mb-30">
-                                <textarea rows="5" name="message"
-                                          class="textarea form-control rounded-0 border-top-0 border-end-0 border-start-0"
-                                          placeholder="Message"></textarea>
-                            </div>
-                            <div class="input-group justify-content-end">
-                                <input type="submit" class="btn btn-primary tm-btn-pad-2" value="Send">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-6 tm-contact-right">
-                        <p class="mb-4">
-                            If you have any questions, feedback, or inquiries, please don't hesitate to reach out to us.
-                            We're here to help!
-                        </p>
-                        <p class="mb-4">
-                            Feel free to use the form on the left to send us a message directly.
-                            We look forward to hearing from you!
-                        </p>
-                        <div>
-                            Email: <a href="mailto:info@company.com" class="tm-link-white">info@company.com</a>
-                        </div>
-                        <div class="tm-mb-45">
-                            Tel: <a href="tel:0000000000" class="tm-link-white">000-000-0000</a>
-                        </div>
-                        <!-- Map -->
-                        <div class="map-outer">
-                            <div class="gmap-canvas">
-                                <iframe width="100%" height="400" id="gmap-canvas"
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1131.6985167254052!2d30.525113656320546!3d50.44897452564033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce517313ffff%3A0x8ecfad616671ad39!2z0JzQvtC90YPQvNC10L3RgiDQndC10LfQsNC70LXQttC90L7RgdGC0ZY!5e0!3m2!1suk!2sua!4v1713528935511!5m2!1suk!2sua"
-                                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                            </div>
-                        </div>
-                    </div>
+        </section>
+        <section>
+            <a href="#" class="image"><img src="{% static 'app_main/images/pic02.jpg' %}" alt=""
+                                           data-position="top center"/></a>
+            <div class="content">
+                <div class="inner">
+                    <h2>Feugiat consequat</h2>
+                    <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat
+                        malesuada quis. Aliquam dapibus.</p>
+                    <ul class="actions">
+                        <li><a href="generic.html" class="button">Learn more</a></li>
+                    </ul>
                 </div>
             </div>
-        </li>
-    </ul>
-</div>
-<div class="container-fluid">
-    <footer class="row mx-auto tm-footer">
-        <div class="col-md-6 px-0">
-            Copyright 2024 Cloudy Team. All rights reserved.
+        </section>
+        <section>
+            <a href="#" class="image"><img src="{% static 'app_main/images/pic03.jpg' %}" alt=""
+                                           data-position="25% 25%"/></a>
+            <div class="content">
+                <div class="inner">
+                    <h2>Ultricies aliquam</h2>
+                    <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat
+                        malesuada quis. Aliquam dapibus.</p>
+                    <ul class="actions">
+                        <li><a href="generic.html" class="button">Learn more</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Two -->
+    <section id="two" class="wrapper style3 fade-up">
+        <div class="inner">
+            <h2>What we do</h2>
+            <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada
+                quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit
+                quis lorem.</p>
+            <div class="features">
+                <section>
+                    <span class="icon solid major fa-code"></span>
+                    <h3>Lorem ipsum amet</h3>
+                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
+                        ultricies erat dapibus.</p>
+                </section>
+                <section>
+                    <span class="icon solid major fa-lock"></span>
+                    <h3>Aliquam sed nullam</h3>
+                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
+                        ultricies erat dapibus.</p>
+                </section>
+                <section>
+                    <span class="icon solid major fa-cog"></span>
+                    <h3>Sed erat ullam corper</h3>
+                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
+                        ultricies erat dapibus.</p>
+                </section>
+                <section>
+                    <span class="icon solid major fa-desktop"></span>
+                    <h3>Veroeros quis lorem</h3>
+                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
+                        ultricies erat dapibus.</p>
+                </section>
+                <section>
+                    <span class="icon solid major fa-link"></span>
+                    <h3>Urna quis bibendum</h3>
+                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
+                        ultricies erat dapibus.</p>
+                </section>
+                <section>
+                    <span class="icon major fa-gem"></span>
+                    <h3>Aliquam urna dapibus</h3>
+                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
+                        ultricies erat dapibus.</p>
+                </section>
+            </div>
+            <ul class="actions">
+                <li><a href="generic.html" class="button">Learn more</a></li>
+            </ul>
         </div>
-        <div class="col-md-6 px-0 tm-footer-right">
-            Designed by <a href="#" target="_blank" rel="noreferrer noopener nofollow"
-                           class="tm-link-white">Cloudy Team</a>
-        </div>
-    </footer>
+    </section>
+
+    <!-- Three -->
+    <section id="three" class="wrapper style1 fade-up">
+        {% include "users/signin.html" %}
+    </section>
+
+    <!-- Four -->
+    <section id="four" class="wrapper style1 fade-up">
+        {% include "users/signup.html" %}
+    </section>
+
+    <!-- Five -->
+    <section id="five" class="wrapper style1 fade-up">
+        {% include "users/signout.html" %}
+    </section>
+
 </div>
-{% endblock content %}
+
+{% endblock %}

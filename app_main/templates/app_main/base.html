@@ -1,91 +1,54 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
+    <title>Hyperspace by HTML5 UP</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     {% load static %}
-    <link rel="shortcut icon" type="image/png" href="{% static 'app_main/img/favicon.ico' %}" >
-    <link rel="stylesheet" href="{% static 'users/auth.css' %}">
-    <link rel="stylesheet" href="{% static 'app_main/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'app_main/css/slick.css' %}" type="text/css"/>
-    <link rel="stylesheet" href="{% static 'app_main/css/templatemo-style.css' %}">
-    <title>Cloudy Contacts</title>
+    <link rel="stylesheet" href="{% static 'app_main/css/main.css' %}"/>
+    <noscript>
+        <link rel="stylesheet" href="{% static 'app_main/css/noscript.css' %}"/>
+    </noscript>
 </head>
-<body>
-<video autoplay muted loop id="bg-video">
-    <source src="{% static 'app_main/video/gfp-astro-timelapse.mp4' %}" type="video/mp4">
-</video>
-<div class="page-container">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="cd-slider-nav">
-                    <nav class="navbar navbar-expand-lg" id="tm-nav">
-                        <a class="navbar-brand" href="{% url 'app_main:root' %}">Cloudy Contacts</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbar-supported-content" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbar-supported-content">
-                            <ul class="navbar-nav mb-2 mb-lg-0">
-                                <li class="nav-item selected">
-                                    <a class="nav-link" aria-current="page" href="{% url 'app_main:root' %}" data-no="1">Home</a>
-                                    <div class="circle"></div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#0" data-no="2">About Team</a>
-                                    <div class="circle"></div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#0" data-no="3">Members</a>
-                                    <div class="circle"></div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#0" data-no="4">Contact</a>
-                                    <div class="circle"></div>
-                                </li>
-                                <!--
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#0" data-no="0">Contacts</a>
-                                    <div class="circle"></div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#0" data-no="0">Notes</a>
-                                    <div class="circle"></div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#0" data-no="0">Sort Files</a>
-                                    <div class="circle"></div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#0" data-no="0">Sign Out</a>
-                                    <div class="circle"></div>
-                                </li>
-                                -->
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
+<body class="is-preload">
+
+<!-- Sidebar -->
+<section id="sidebar">
+    <div class="inner">
+        <nav>
+            <ul>
+                <li><a href="#intro">Welcome</a></li>
+                <li><a href="#one">Who we are</a></li>
+                <li><a href="#two">What we do</a></li>
+                <li><a href="#three">Sign In</a></li>
+                <li><a href="#four">Sign Up</a></li>
+                <li><a href="#five">Sign Out</a></li>
+            </ul>
+        </nav>
     </div>
-    {% block content %}
-    {% endblock content %}
-</div>
-<!-- Preloader, https://ihatetomatoes.net/create-custom-preloading-screen/ -->
-<div id="loader-wrapper">
-    <div id="loader"></div>
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
-</div>
-<script src="{% static 'app_main/js/jquery-3.5.1.min.js' %}"></script>
-<script src="{% static 'app_main/js/bootstrap.min.js' %}"></script>
-<script src="{% static 'app_main/js/slick.js' %}"></script>
-<script src="{% static 'app_main/js/templatemo-script.js' %}"></script>
-<script src="{% static 'users/auth.js' %}"></script>
+</section>
+
+{% block content %}
+{% endblock %}
+
+<!-- Footer -->
+<footer id="footer" class="wrapper style1-alt">
+    <div class="inner">
+        <ul class="menu">
+            <li>&copy; Untitled. All rights reserved.</li>
+            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="{% static 'app_main/js/jquery.min.js' %}"></script>
+<script src="{% static 'app_main/js/jquery.scrollex.min.js' %}"></script>
+<script src="{% static 'app_main/js/jquery.scrolly.min.js' %}"></script>
+<script src="{% static 'app_main/js/browser.min.js' %}"></script>
+<script src="{% static 'app_main/js/breakpoints.min.js' %}"></script>
+<script src="{% static 'app_main/js/util.js' %}"></script>
+<script src="{% static 'app_main/js/main.js' %}"></script>
+
 </body>
 </html>

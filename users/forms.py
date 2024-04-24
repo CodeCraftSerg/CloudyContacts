@@ -36,11 +36,6 @@ class LoginForm(AuthenticationForm):
         required=True,
         widget=TextInput(attrs={"class": "form-control"}),
     )
-    email = EmailField(
-        max_length=320,
-        required=True,
-        widget=EmailInput(attrs={"class": "form-control"}),
-    )
     password = CharField(
         required=True,
         widget=PasswordInput(attrs={"class": "form-control"}),
