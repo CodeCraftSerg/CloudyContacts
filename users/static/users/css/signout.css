@@ -1,0 +1,68 @@
+/* CSS Custom Variables */
+:root {
+    --bg_clr: #E8E9E7;
+    --prime_clr: #b74e91;
+    --second_clr: #b74e91;
+    --gen_border: 1px solid rgba(0, 0, 0, .2);
+    --gen_box_shadow: 0 0 6px rgba(0, 0, 0, .2);
+}
+
+/* CSS Resets */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.logout-container {
+    margin: 1em;
+    padding: 2em;
+    background: #493382;
+    text-align: center;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: var(--gen_box_shadow);
+}
+
+.reset-container {
+    margin: 1em;
+    padding: 2em;
+    background: #493382;
+    text-align: left;
+    position: relative;
+    border-radius: 10px;
+}
+
+.logout-container::before {
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    z-index: 100;
+    aspect-ratio: 1;
+    position: absolute;
+    border-top-left-radius: 10px;
+    clip-path: polygon(47% 0, 0 29%, 0 0);
+    background: linear-gradient(45deg, var(--prime_clr), var(--second_clr));
+}
+
+.logout-container img {
+    z-index: 300;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+}
+
+.logout-container h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--prime_clr);
+}
+
+.logout-container p {
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.logout-container a {
+    color: var(--second_clr);
+}
