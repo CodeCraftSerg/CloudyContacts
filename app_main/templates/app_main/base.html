@@ -33,8 +33,8 @@
                 </li>
                 {% else %}
                 <li><a href="{% url 'app_main:root' %}">Welcome</a></li>
-                <li><a href="#one">Who we are</a></li>
-                <li><a href="#two">What we do</a></li>
+                <li><a href="{% url 'app_main:about_team' %}">About Team</a></li>
+                <li><a href="{% url 'app_main:about_application' %}">About Application</a></li>
                 <li><a href="{% url 'users:signin' %}">Sign In</a></li>
                 <li><a href="{% url 'users:signup' %}">Sign Up</a></li>
                 {% endif %}
@@ -50,25 +50,12 @@
     {% block intro %}
     {% endblock %}
 
-    <!-- One -->
-    {% block one %}
+    <!-- Auth -->
+    {% block auth %}
     {% endblock %}
 
-
-    <!-- Two -->
-    {% block two %}
-    {% endblock %}
-
-    <!-- Three -->
-    {% block three %}
-    {% endblock %}
-
-    <!-- Four -->
-    {% block four %}
-    {% endblock %}
-
-    <!-- Five -->
-    {% block five %}
+    <!-- PasswordReset -->
+    {% block reset %}
     {% endblock %}
 
     <!-- Contacts -->
@@ -93,8 +80,8 @@
 <footer id="footer" class="wrapper style1-alt">
     <div class="inner">
         <ul class="menu">
-            <li>&copy; Untitled. All rights reserved.</li>
-            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            <li>&copy; The CloudyContacts. All rights reserved.</li>
+            <li>Design: <a href="{% url 'app_main:root' %}">The Cloudy Contacts</a></li>
         </ul>
     </div>
 </footer>

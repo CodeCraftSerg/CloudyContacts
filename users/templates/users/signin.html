@@ -1,9 +1,9 @@
 {% extends 'app_main/base.html' %}
 
-{% block three %}
+{% block auth %}
 {% load static %}
 
-<section id="three" class="wrapper style1 fade-up">
+<section id="signin" class="wrapper style1 fade-up">
     <div class="inner">
         <h2>Sign In</h2>
         <div class="split style1">
@@ -36,7 +36,11 @@
                             <li>
                                 <div class="small text-left">
                                     <p></p>
-                                    <a href="#" class="text-center"><i>Forgot Password?</i></a>
+                                    <p class="signin">
+                                        <a href="{% url 'users:password_reset' %}" class="text-center">
+                                            <i>Forgot Password?</i>
+                                        </a>
+                                    </p>
                                 </div>
                             </li>
                         </ul>

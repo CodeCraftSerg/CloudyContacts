@@ -1,9 +1,9 @@
 {% extends 'app_main/base.html' %}
 
-{% block four %}
+{% block auth %}
 {% load static %}
 
-<section id="four" class="wrapper style1 fade-up">
+<section id="signup" class="wrapper style1 fade-up">
     <div class="inner">
         <h2>Sign Up</h2>
         <div class="split style1">
@@ -54,7 +54,7 @@
                     <ul class="actions">
                         <button type="submit" class="button submit">Submit</button>
                     </ul>
-                    <p class="signin">Already have an account ? <a href="{% url 'users:signin' %}">Sign In</a></p>
+                    <p class="signin">Already have an account? <a href="{% url 'users:signin' %}">Sign In</a></p>
                     <p class="signin">Back to the <a href="/">start</a></p>
                 </form>
             </section>
