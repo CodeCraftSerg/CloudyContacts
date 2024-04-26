@@ -51,8 +51,8 @@ INSTALLED_APPS = [
     "users",
     "app_contacts",
     "app_notes",
-    "app_download",
-    "app_sort",
+    "app_files",
+    "app_news",
 ]
 
 MIDDLEWARE = [

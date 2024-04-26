@@ -25,8 +25,8 @@
                 <li><a href="{% url 'app_main:root' %}">Welcome</a></li>
                 <li><a href="{% url 'app_contacts:contacts' %}">Contacts</a></li>
                 <li><a href="{% url 'app_notes:notes' %}">Notes</a></li>
-                <li><a href="{% url 'app_download:download' %}">Download</a></li>
-                <li><a href="{% url 'app_sort:sort' %}">Sort</a></li>
+                <li><a href="{% url 'app_files:files_page' %}">Files</a></li>
+                <li><a href="{% url 'app_news:news_page' %}">News</a></li>
                 <li>
                     <form method="post" action="{% url 'users:signout' %}">
                         {% csrf_token %}
@@ -68,12 +68,12 @@
     {% block notes %}
     {% endblock %}
 
-    <!-- Download -->
-    {% block download %}
+    <!-- Files Page -->
+    {% block files_page %}
     {% endblock %}
 
-    <!-- Sort -->
-    {% block sort %}
+    <!-- News Page -->
+    {% block news_page %}
     {% endblock %}
 
 </div>

@@ -24,6 +24,6 @@ urlpatterns = [
     path("users/", include("users.urls")),
     path("app_contacts/", include("app_contacts.urls")),
     path("app_notes/", include("app_notes.urls")),
-    path("app_download/", include("app_download.urls")),
-    path("app_sort/", include("app_sort.urls")),
+    path("app_files/", include("app_files.urls")),
+    path("app_news/", include("app_news.urls")),
 ]
