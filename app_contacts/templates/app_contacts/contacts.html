@@ -6,7 +6,33 @@
 <section id="five" class="wrapper style1 fade-up">
     <div class="inner">
         <h2>Contacts</h2>
-    </div>
-</section>
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <span {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <form method="get">
 
+                <ul class="">
+                    {% for contact in contacts %}
+                    <li class="">
+                        <a href="/app_contacts/contact_details/{{ contact.id }}/">{{ contact.name }} {{ contact.surname }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+        </form>
+    </div>
+</section >
+{% if user.is_authenticated %}
+<section class="wrapper style1 fade-up">
+    <div class="inner">
+        <form  method="get" action="{% url 'app_contacts:add_contact' %}">
+            <button class="btn" type="submit">Add contact</button>
+        </form>
+    </div>
+
+</section>
+{% endif %}
 {% endblock %}
