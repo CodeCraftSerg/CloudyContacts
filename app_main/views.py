@@ -1,11 +1,21 @@
 import requests
+import environ
 
 from datetime import date
 from django.shortcuts import render
 
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+
 
 def main(request):
-    url_1 = "https://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=5a7905ae0749286342583f6e37bf5df7"
+    API_WEATHER_KEY = env("API_WEATHER_KEY")
+    url_1 = (
+        "https://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid="
+        + API_WEATHER_KEY
+    )
 
     city = "Kyiv"
 
