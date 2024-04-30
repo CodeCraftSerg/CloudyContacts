@@ -75,6 +75,9 @@ pip-delete-this-directory.txt
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
 
+#PostgreSQL Data files
+.postgres-data/
+
 # Scrapy stuff:
 .scrapy
 

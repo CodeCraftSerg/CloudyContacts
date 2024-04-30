@@ -23,8 +23,8 @@ def main(request):
         + ABSTRACT_API_KEY
         + "&ip_address="
     )
-    # print(response_ip.status_code)
-    # print(response_ip.content)
+    print(response_ip.status_code)
+    print(response_ip.content)
     if response_ip.status_code == 200:
         data = response_ip.json()
         city = data["city"]

@@ -2,7 +2,7 @@
 name = "cloudycontacts"
 version = "0.1.0"
 description = ""
-authors = ["Serg <https://github.com/CodeCraftSerg>", "Olha <https://github.com/HelgaTsar>", "Iurii Popov <https://github.com/ShuguruiUA>", "Aryna Reutska <https://github.com/xrendezvous>"]
+authors = ["Serg <https://github.com/CodeCraftSerg>", "Olha <https://github.com/HelgaTsar>", "Iurii Popov <https://github.com/ShuguruiUA>", "Aryna Reutska <https://github.com/xrendezvous>", "Kris <https://github.com/Krisiris250592>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
