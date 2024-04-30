@@ -1,0 +1,59 @@
+.main-weather {
+    text-align: center;
+    width: fit-content;
+    overflow: hidden;
+    background: #493382;
+    border: 2px solid #000;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+}
+
+.weather-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.weather-icon,
+.weather-current,
+.weather-temps {
+    flex-basis: 30%;
+    text-align: center;
+}
+
+.weather-icon img {
+    max-width: 100%;
+}
+
+.main-currency {
+    text-align: center;
+    width: fit-content;
+    overflow: hidden;
+    background: #493382;
+    border: 2px solid #000;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+}
+
+.currency-info {
+    padding: 30px 100px 30px 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.currency-info ul {
+    list-style-type: none;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
