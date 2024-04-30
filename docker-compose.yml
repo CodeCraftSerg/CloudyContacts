@@ -5,7 +5,7 @@ services:
     ports:
       - "6379:6379"
   postgres:
-    image: postgres:16
+    image: postgres:16.2
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
@@ -13,4 +13,4 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+      - ./postgres-data:/var/lib/postgresql/data 777
