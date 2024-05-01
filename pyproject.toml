@@ -2,19 +2,18 @@
 name = "cloudycontacts"
 version = "0.1.0"
 description = ""
-authors = ["Serg <https://github.com/CodeCraftSerg>", "Olha <https://github.com/HelgaTsar>", "Iurii Popov <https://github.com/ShuguruiUA>", "Aryna Reutska <https://github.com/xrendezvous>"]
+authors = ["Serg <https://github.com/CodeCraftSerg>", "Olha <https://github.com/HelgaTsar>", "Iurii Popov <https://github.com/ShuguruiUA>", "Aryna Reutska <https://github.com/xrendezvous>", "Kris <https://github.com/Krisiris250592>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.10"
 black = "^24.4.0"
 django = "^5.0.4"
-psycopg2 = "^2.9.9"
+psycopg2-binary = "^2.9.9"
 django-environ = "^0.11.2"
 environ = "^1.0"
 gunicorn = "^22.0.0"
 whitenoise = "^6.6.0"
-
 
 [build-system]
 requires = ["poetry-core"]

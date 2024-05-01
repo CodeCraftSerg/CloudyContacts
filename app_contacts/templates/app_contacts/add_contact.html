@@ -1,0 +1,116 @@
+{% extends 'app_main/base.html' %}
+
+{% block contacts %}
+{% load static %}
+
+
+<section id="five" class="wrapper style1 fade-up">
+    <div class="inner">
+        <h2>Add contact</h2>
+        <div class="split style1">
+            <section>
+                {% if form.errors  %}
+                <div class="alert alert-danger" role="alert">
+                    Please correct the errors below.
+                </div>
+                {% endif %}
+                {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                    <span {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>{{ message }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <form method="post" action="{% url 'app_contacts:add_contact' %}">
+                    {% csrf_token %}
+                    <span>Enter a Name and Surname:</span>
+                    <div class="row gtr-uniform">
+                        <div class="col-6 col-12-xsmall">
+                            <input type="text" style="form-class" placeholder="Name" name="name">
+                            {{ form.errors.name }}
+                        </div>
+                        <div class="col-6 col-12-xsmall">
+                            <input type="text" style="form-class" placeholder="Surname" name="surname">
+                        </div>
+                    </div>
+                    <span>Enter Email:</span>
+                    <div class="row gtr-uniform">
+                        <div class="col-6 col-12-xsmall">
+                            <input type="text" style="form-class" placeholder="name@email.com" name="email">
+                            {{ form.errors.email }}
+                        </div>
+                    </div>
+                    <span>Enter Phone numbers:</span>
+                    <div class="row gtr-uniform">
+                        <div class="col-6 col-12-xsmall">
+                            mobile<input type="text" style="form-class" placeholder="+380(XX)XXX-XX-XX" name="mobile_phone">
+                            {{ form.errors.mobile_phone }}
+                        </div>
+                        <div class="col-6 col-12-xsmall">
+                            work<input type="text" style="form-class" placeholder="+380(XX)XXX-XX-XX" name="work_phone">
+                            {{ form.errors.work_phone }}
+                        </div>
+                        <div class="col-6 col-12-xsmall">
+                            home<input type="text" style="form-class" placeholder="+380(XX)XXX-XX-XX" name="home_phone">
+                            {{ form.errors.home_phone }}
+                        </div>
+                    </div>
+                    <span>Enter Birthday:</span>
+                    <div class="row gtr-uniform">
+                        <div class="col-6 col-12-xsmall">
+                            <input type="text" class="form-control" placeholder="dd/mm/YYYY" name="birthdate">
+                        </div>
+                    </div>
+                    <span>Facebook</span>
+                    <div class="row gtr-uniform">
+                        <div class="col-6 col-12-xsmall">
+                            <input type="text" class="form-control" placeholder="https://facebook.com/" name="facebook">
+                        </div>
+                    </div>
+                    <span>Instagram</span>
+                    <div class="row gtr-uniform">
+                        <div class="col-6 col-12-xsmall">
+                            <input type="text" class="form-control" placeholder="https://instagram.com/"
+                                   name="instagram">
+                        </div>
+                    </div>
+                    <span>Tiktok</span>
+                    <div class="row gtr-uniform">
+                        <div class="col-6 col-12-xsmall">
+                            <input type="text" class="form-control" placeholder="https://tiktok.com/" name="tiktok">
+                        </div>
+                    </div>
+
+                    <span>Address:</span>
+                    <div class="row gtr-uniform">
+
+                        <div class="col-6 col-12-xsmall">
+                            <input type="text" class="form-control" placeholder="Country" name="country">
+                        </div>
+                        <div class="col-6 col-12-xsmall">
+                            <input type="text" class="form-control" placeholder="City" name="city">
+                        </div>
+                        <div class="col-6 col-12-xsmall">
+                            <input type="text" class="form-control" placeholder="Address" name="address">
+                        </div>
+                    </div>
+                    <div class="row gtr-uniform">
+                        <div class="col-6 col-12-xsmall" style="margin-top: 1em">
+                            <input id="is_favorite" type="checkbox" name="is_favorite">
+                            <label class="form-label" for="is_favorite">Favorite</label>
+
+                        </div>
+                    </div>
+
+                    <div class="row gtr-uniform">
+                        <div clas="col-6 col-12-xsmall">
+                            <button class="btn" type="submit">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

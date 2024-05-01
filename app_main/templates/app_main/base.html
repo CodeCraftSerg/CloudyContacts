@@ -12,6 +12,7 @@
     </noscript>
     <link rel="stylesheet" href="{% static 'app_main/css/fontawesome-all.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'users/css/signout.css' %}"/>
+    <link rel="stylesheet" href="{% static 'app_main/css/style.css' %}"/>
 </head>
 <body class="is-preload">
 
@@ -25,8 +26,8 @@
                 <li><a href="{% url 'app_main:root' %}">Welcome</a></li>
                 <li><a href="{% url 'app_contacts:contacts' %}">Contacts</a></li>
                 <li><a href="{% url 'app_notes:notes' %}">Notes</a></li>
-                <li><a href="{% url 'app_download:download' %}">Download</a></li>
-                <li><a href="{% url 'app_sort:sort' %}">Sort</a></li>
+                <li><a href="{% url 'app_files:files_page' %}">Files</a></li>
+                <li><a href="{% url 'app_news:news_page' %}">News</a></li>
                 <li>
                     <form method="post" action="{% url 'users:signout' %}">
                         {% csrf_token %}
@@ -68,12 +69,12 @@
     {% block notes %}
     {% endblock %}
 
-    <!-- Download -->
-    {% block download %}
+    <!-- Files Page -->
+    {% block files_page %}
     {% endblock %}
 
-    <!-- Sort -->
-    {% block sort %}
+    <!-- News Page -->
+    {% block news_page %}
     {% endblock %}
 
 </div>
@@ -96,6 +97,14 @@
 <script src="{% static 'app_main/js/breakpoints.min.js' %}"></script>
 <script src="{% static 'app_main/js/util.js' %}"></script>
 <script src="{% static 'app_main/js/main.js' %}"></script>
+<script src="{% static 'app_main/js/skycons.js' %}"></script>
+<script type="application/x-javascript"> addEventListener("load", function () {
+    setTimeout(hideURLbar, 0);
+}, false);
+
+function hideURLbar() {
+    window.scrollTo(0, 1);
+} </script>
 
 </body>
 </html>

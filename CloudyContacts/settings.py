@@ -51,8 +51,8 @@ INSTALLED_APPS = [
     "users",
     "app_contacts",
     "app_notes",
-    "app_download",
-    "app_sort",
+    "app_files",
+    "app_news",
 ]
 
 MIDDLEWARE = [
@@ -99,16 +99,39 @@ WSGI_APPLICATION = "CloudyContacts.wsgi.application"
 # }
 
 # --- PostgreSQL Database ---
+# DATABASES = {
+#     "default": {
+#         "ENGINE": env("DB_ENGINE"),
+#         "NAME": env("DB_NAME"),
+#         "USER": env("DB_USER"),
+#         "PASSWORD": env("DB_PASSWORD"),
+#         "HOST": env("DB_HOST"),
+#         "PORT": env("DB_PORT"),
+#     }
+# }
+
+# --- koyeb Database ---
 DATABASES = {
     "default": {
-        "ENGINE": env("DB_ENGINE"),
-        "NAME": env("DB_NAME"),
-        "USER": env("DB_USER"),
-        "PASSWORD": env("DB_PASSWORD"),
-        "HOST": env("DB_HOST"),
-        "PORT": env("DB_PORT"),
+        "ENGINE": env("KOYEB_ENGINE"),
+        "NAME": env("KOYEB_NAME"),
+        "USER": env("KOYEB_USER"),
+        "PASSWORD": env("KOYEB_PASSWORD"),
+        "HOST": env("KOYEB_HOST"),
     }
 }
+
+# --- ElephantSQL Database ---
+# DATABASES = {
+#     "default": {
+#         "ENGINE": env("ELEPHANT_ENGINE"),
+#         "NAME": env("ELEPHANT_DB_NAME_USER"),
+#         "USER": env("ELEPHANT_DB_NAME_USER"),
+#         "PASSWORD": env("ELEPHANT_PASSWORD"),
+#         "HOST": env("ELEPHANT_HOST"),
+#         "PORT": env("ELEPHANT_PORT"),
+#     }
+# }
 
 
 # Password validation
