@@ -1,0 +1,51 @@
+{% extends 'app_main/base.html' %}
+
+{% block notes %}
+{% load static %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<section id="five" class="wrapper style1 fade-up">
+<a href="/app_notes" role="button" class="active">
+    To List of Notes</a>
+</section>
+<div class="form-block">
+    <h3>Creating</h3>
+    <br/>
+    <form method="POST" action="{% url 'app_notes:note' %}">
+        {% csrf_token %}
+        <div class="row gtr-uniform">
+            <div class="col-6">
+                <label> Name:
+                    {{ form.title }}
+                </label>
+            </div>
+            <span>{{ form.errors.title }}</span>
+
+        <div class="col-6">
+            <label> Description:
+                {{ form.body }}
+            </label>
+        </div>
+            <span>{{ form.errors.body }}</span>
+
+        <div class="col-6">
+            <label> Select Tags:
+                <select name="tags" multiple="multiple" size="5"  required>
+                    {% for tag in tags %}
+                    <option value="{{tag.name}}">{{tag.name}}</option>
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="primary">Save</button>
+        </div>
+            </div>
+    </form>
+</div>
+
+{% endblock %}

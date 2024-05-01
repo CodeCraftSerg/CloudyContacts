@@ -1,0 +1,35 @@
+{% extends 'app_main/base.html' %}
+{% block notes %}
+{% load static %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<section id="five" class="wrapper style1 fade-up">
+    <a href="/app_notes">To the List Notes</a>
+</section>
+    <div class="form-block">
+        <div class="text-center">
+        <h3>Add Tag</h3>
+            <br>
+        <form method="POST" action="{% url 'app_notes:tag' %}">
+            <div class="row gtr-uniform">
+            {% csrf_token %}
+                <div class="col-6">
+                    <label>Enter the Tag Name:
+                        {{form.name}}
+                    </label>
+                </div>
+            </div>
+                <span>{{ form.errors.name }}</span>
+            <div class="col-12">
+                <br>
+                <button type="submit" class="primary">Save</button>
+            </div>
+        </form>
+        </div>
+    </div>
+
+{% endblock %}
