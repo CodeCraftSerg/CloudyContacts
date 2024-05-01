@@ -1,12 +1,36 @@
 {% extends 'app_main/base.html' %}
-
 {% block news_page %}
 {% load static %}
-
 <section id="news_page" class="wrapper style1 fade-up">
     <div class="inner">
-        <h2>NEWS</h2>
+        <h2 id="news_category">News</h2>
     </div>
+    <div class="widget-container" style="margin: 0 30px;">
+        <ins data-wrapper="russianwarshiprip-widget" data-width="1100" data-lang="en" data-charity="off"
+            data-color="light" data-autoplay="autoplay" data-corners="rounded" data-borders="bordered" data-speed="700"
+            data-stop="stop"></ins>
+        <script defer src="https://russianwarship.rip/widgets/init.js"></script>
+    </div>
+    <div id="content"></div>
+    <div class="buttons" style="margin-top: 50px;">
+        <button style="margin-right: 200px; margin-left: 100px;" onclick="showNews('Sport')">Sport</button>
+        <button style="margin-right: 200px;" onclick="showNews('Politic')">Politic</button>
+        <button onclick="showNews('Culture')">Culture</button>
+    </div> 
 </section>
+
+<script>
+    function showNews(category) {
+        if (category === 'Sport') {
+            window.location.href = "/app_news/sport-news/";
+        } else if (category === 'Politic') {
+            window.location.href = "/app_news/politic-news/";
+        } else if (category === 'Culture') {
+            window.location.href = "/app_news/culture-news/";
+        } else {
+            console.log("Showing " + category + " news.");
+        }
+    }
+</script>
 
 {% endblock %}

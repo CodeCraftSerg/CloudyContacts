@@ -1,0 +1,102 @@
+{% extends 'app_main/base.html' %}
+{% block news_page %}
+{% load static %}
+    <section id="news_page" class="wrapper style1 fade-up">
+        <div class="inner">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 style="margin: 0;">Sport News</h2>
+                <a href="{% url 'app_news:news_page' %}" class="button" style="margin-right: 30px;">Back</a>
+            </div>
+        </div>
+        <div class="best_bookies" style="margin: 20px 30px 20px; border: 1px solid #ccc; border-radius: 10px; padding: 10px;">
+            <div class="title" style="text-align: center;">The best bookmakers</div>
+            <table class="best_bookies-table">
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Bookmaker</th>
+                        <th>Bonus</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <a href="https://sport.ua/uk/betting/bookmakers/favbet" title="Огляд Favbet">
+                                <img src="https://pic.sport.ua/images/betting/bookmakers/favbet_1_small.jpg" alt="Favbet" loading="lazy" width="80" height="27">
+                            </a>
+                        </td>
+                        <td>10000₴</td>
+                        <td>
+                            <a href="https://sport.ua/go/sportlinks.info/dMXwz9V4" target="_blank" rel="nofollow noopener" onclick="dataLayer.push({'event': 'Bookmaker','eventCategory': 'Outbound bookmaker','eventAction': 'Favbet','eventLabel': 'https://sport.ua/uk/news'});">To the site</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <a href="https://sport.ua/uk/betting/bookmakers/vbet" title="Огляд VBET">
+                                <img src="https://pic.sport.ua/images/betting/bookmakers/vbet_1_small.jpg" alt="VBET" loading="lazy" width="80" height="27">
+                            </a>
+                        </td>
+                        <td>2500₴</td>
+                        <td>
+                            <a href="https://sport.ua/go/sportlinks.info/K2Rn4x6S" target="_blank" rel="nofollow noopener" onclick="dataLayer.push({'event': 'Bookmaker','eventCategory': 'Outbound bookmaker','eventAction': 'VBET','eventLabel': 'https://sport.ua/uk/news'});">To the site</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <a href="https://sport.ua/uk/betting/bookmakers/ggbet" title="Огляд Ggbet">
+                                <img src="https://pic.sport.ua/images/betting/bookmakers/ggbet_small.jpg" alt="Ggbet" loading="lazy" width="80" height="27">
+                            </a>
+                        </td>
+                        <td>12000₴</td>
+                        <td>
+                            <a href="https://sport.ua/go/sportlinks.info/FpmrYFCZ" target="_blank" rel="nofollow noopener" onclick="dataLayer.push({'event': 'Bookmaker','eventCategory': 'Outbound bookmaker','eventAction': 'Ggbet','eventLabel': 'https://sport.ua/uk/news'});">To the site</a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" align="center" style="padding-top: 20px; padding-bottom: 0px;">
+                            <a href="https://sport.ua/uk/betting/bookmakers-ukraine" target="_blank">All bookmakers</a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div id="sport_news" style="margin: 20px 30px;">
+            {% for news in sport_news %}
+            <div class="news-item" style="margin: 0 0 20px; border: 1px solid #ccc; border-radius: 10px; padding: 10px;">
+                <p><strong>{{ news.time }}</strong></p>
+                <p><strong>{{ news.sport }}</strong>: {{ news.news }}</p>
+                <p><a href="{{ news.url }}" class="button">Read More</a></p>
+            </div>
+            {% empty %}
+            <p>No sport news available</p>
+            {% endfor %}
+        </div>
+    </section>
+    <footer style="margin-left: 30px; margin-bottom: 20px;">
+        <div>
+            <a href="{% url 'app_news:news_page' %}" class="button">Back</a>
+        </div>
+    </footer>
+    <style>
+        .news-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .news-item p {
+            margin: 5px 0;
+        }
+        .best_bookies {
+            margin: 20px 30px 0px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+        }
+    </style>
+{% endblock %}
