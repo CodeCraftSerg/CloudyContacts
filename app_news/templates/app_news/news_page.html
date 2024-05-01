@@ -14,19 +14,19 @@
     <div id="content"></div>
     <div class="buttons" style="margin-top: 50px;">
         <button style="margin-right: 200px; margin-left: 100px;" onclick="showNews('Sport')">Sport</button>
-        <button style="margin-right: 200px;" onclick="showNews('Politic')">Politic</button>
-        <button onclick="showNews('Culture')">Culture</button>
-    </div>
+        <button style="margin-right: 200px;" onclick="showNews('Culture')">Culture</button>
+        <button onclick="showNews('Politic')">Politic</button>
+    </div> 
 </section>
 
 <script>
     function showNews(category) {
         if (category === 'Sport') {
             window.location.href = "/app_news/sport-news/";
-        } else if (category === 'Politic') {
-            window.location.href = "/app_news/politic-news/";
         } else if (category === 'Culture') {
             window.location.href = "/app_news/culture-news/";
+        } else if (category === 'Politic') {
+            window.location.href = "/app_news/politic-news/";
         } else {
             console.log("Showing " + category + " news.");
         }
