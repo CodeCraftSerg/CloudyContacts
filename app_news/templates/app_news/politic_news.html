@@ -1,0 +1,42 @@
+{% extends 'app_main/base.html' %}
+
+{% block news_page %}
+<section id="news_page" class="wrapper style1 fade-up">
+    <div class="inner">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2 style="margin: 0;">Political News</h2>
+            <a href="{% url 'app_news:news_page' %}" class="button" style="margin-right: 30px;">Back</a>
+        </div>
+    </div>
+    <div id="politic_news" style="margin: 20px 30px;">
+        {% for news_item in news %}
+        <div class="news-item" style="margin: 0 0 20px; border: 1px solid #ccc; border-radius: 10px; padding: 10px;">
+            <p><strong>{{ news_item.time }}</strong></p>
+            <p><strong>{{ news_item.title }}</strong></p>
+            <p><a href="{{ news_item.url }}" class="button">Read More</a></p>
+        </div>
+        {% empty %}
+        <p>No political news available</p>
+        {% endfor %}
+    </div>
+</section>
+
+<footer style="margin-left: 30px; margin-top: 20px; margin-bottom: 20px;">
+    <div>
+        <a href="{% url 'app_news:news_page' %}" class="button">Back</a>
+    </div>
+</footer>
+
+<style>
+    .news-item {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+    }
+    
+    .news-item p {
+        margin: 5px 0;
+    }
+
+</style>
+{% endblock %}
