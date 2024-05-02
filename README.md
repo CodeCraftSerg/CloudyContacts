@@ -22,7 +22,6 @@ Now open the .env.example file and fill in the fields for the variables you need
 * SECRET_KEY=your-django-secret-key
 * API_WEATHER_KEY=your-weather-key
 * ABSTRACT_API_KEY=your-abstract-key
-
 * DB_ENGINE=django.db.backends.postgresql_psycopg2
 * DB_USER=your-username
 * DB_PASSWORD=your-password
