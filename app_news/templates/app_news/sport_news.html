@@ -2,16 +2,18 @@
 
 {% block news_page %}
 {% load static %}
-    <section id="news_page" class="wrapper style1 fade-up">
-        <div class="inner">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h2 style="margin: 0;">Sport News</h2>
-                <a href="{% url 'app_news:news_page' %}" class="button" style="margin-right: 30px;">Back</a>
-            </div>
+
+<section id="news_page" class="wrapper style1 fade-up">
+    <div class="inner">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2 style="margin: 0;">Sport News</h2>
+            <a href="{% url 'app_news:news_page' %}" class="button" style="margin-right: 30px;">Back</a>
         </div>
+
         <div id="sport_news" style="margin: 20px 30px;">
             {% for news in sport_news %}
-            <div class="news-item" style="margin: 0 0 20px; border: 1px solid #ccc; border-radius: 10px; padding: 10px;">
+            <div class="news-item"
+                 style="margin: 0 0 20px; border: 1px solid #ccc; border-radius: 10px; padding: 10px;">
                 <p><strong>{{ news.time }}</strong></p>
                 <p><strong>{{ news.sport }}</strong>: {{ news.news }}</p>
                 <p><a href="{{ news.url }}" class="button" target="_blank">Read More</a></p>
@@ -20,8 +22,7 @@
             <p>No sport news available</p>
             {% endfor %}
         </div>
-    </section>
-    <footer style="margin-left: 30px; margin-bottom: 20px;">
+
         <div style="display: flex; justify-content: space-between; align-items: center;">
             {% if sport_news.has_previous %}
             <a href="?page={{ sport_news.previous_page_number }}" class="button">Previous</a>
@@ -32,21 +33,27 @@
                 {% endif %}
             </div>
         </div>
-    </footer>
-    <style>
-        .news-item {
-            margin-bottom: 20px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-        }
-        .news-item p {
-            margin: 5px 0;
-        }
-        .best_bookies {
-            margin: 20px 30px 0px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 10px;
-        }
-    </style>
+
+    </div>
+</section>
+
+<style>
+    .news-item {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+    }
+
+    .news-item p {
+        margin: 5px 0;
+    }
+
+    .best_bookies {
+        margin: 20px 30px 0px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+    }
+</style>
+
 {% endblock %}

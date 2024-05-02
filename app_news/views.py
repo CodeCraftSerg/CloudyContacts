@@ -93,28 +93,33 @@ def sport_news(request):
     return render(request, "app_news/sport_news.html", {"sport_news": sport_news_page})
 
 
-
 @login_required
 def politic_news(request):
     # Initialize an empty list to store politic news
     politic_news = []
-
     # URL of the website to scrape news from
     base_url = "https://suspilne.media/"
-
     # Get response from the server
     try:
         response = requests.get(base_url)
         response.raise_for_status()  # Raise an exception for HTTP errors
     except requests.exceptions.RequestException as e:
         # Return an error message if there's a problem with getting the response
-        return render(request, 'app_news/error.html', {'message': 'Could not get response from server.'})
-
-    soup = BeautifulSoup(response.text, 'html.parser')
-
+        return render(
+            request,
+            "app_news/error.html",
+            {"message": "Could not get response from server."},
+        )
+    soup = BeautifulSoup(response.text, "html.parser")
     # Find the main news container
-    news_containers = soup.find_all('div', class_=['c-article-card-bgimage', 'c-article-card', 'c-article-card--big-headline'])
-
+    news_containers = soup.find_all(
+        "div",
+        class_=[
+            "c-article-card-bgimage",
+            "c-article-card",
+            "c-article-card--big-headline",
+        ],
+    )
     # Get news items from each container
     for container in news_containers:
         result = {}
@@ -126,7 +131,6 @@ def politic_news(request):
             )
             original_datetime = original_datetime + timedelta(hours=hours_offset)
             new_datetime_str = original_datetime.strftime("%Y-%m-%d %H:%M")
-
             result["time"] = new_datetime_str
             result["title"] = container.find(
                 "h3", class_="c-article-card__headline-inner"
@@ -137,16 +141,13 @@ def politic_news(request):
         except AttributeError as e:
             # Skip if any attribute error occurs
             continue
-
         politic_news.append(result)
-
     # Check if any news found
     if not politic_news:
         # Return an error message if no news found
         return render(
             request, "app_news/error.html", {"message": "No political news available."}
         )
-
     # Paginate the news
     paginator = Paginator(politic_news, 5)  # Show 5 news per page
     page_number = request.GET.get("page")
@@ -156,10 +157,8 @@ def politic_news(request):
         politic_news_page = paginator.page(1)
     except EmptyPage:
         politic_news_page = paginator.page(paginator.num_pages)
-
     # Render the politic_news template with paginated news data
-    return render(request, 'app_news/politic_news.html', {'news': politic_news_page})
-
+    return render(request, "app_news/politic_news.html", {"news": politic_news_page})
 
 
 @login_required
