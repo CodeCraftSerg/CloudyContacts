@@ -19,12 +19,42 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ note.title }}</h5>
                             <p class="card-text">{{ note.body }}</p>
-                            <div class="btn-group" role="group" aria-label="">
-                                <a href="{% url 'app_notes:set_done' note.id %}"
-                                   class="btn btn-outline-secondary btn-sm">Done</a>
-                                <a href="{% url 'app_notes:detail' note.id %}" class="btn btn-outline-secondary btn-sm">Details</a>
-                                <a href="{% url 'app_notes:edit_note' note.id %}" class="btn btn-outline-info btn-sm">Edit</a>
-                                <a href="{% url 'app_notes:delete' note.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+                            <div class="row">
+                                 <div class="col">
+                                    <a href="{% url 'app_notes:set_done' note.id %}">
+                                        <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" height="20px"
+                                             viewBox="0 0 448 512">
+                                            <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/>
+                                        </svg>
+                                    </a>
+                                 </div>
+                                <div class="col">
+                                    <a href="{% url 'app_notes:detail' note.id %}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                             height="20px">
+                                            <path fill="none" d="M0 0h24v24H0z"/>
+                                            <path d="M12 17.27L18.18 12 12 6.73 11 7.8l4.2 4.2-4.2 4.2 1 1.07zM12 4C6.48 4 2 6.69 2 10s4.48 6 10 6 10-2.69 10-6-4.48-6-10-6zm0 10c-3.58 0-6-1.79-6-4s2.42-4 6-4 6 1.79 6 4-2.42 4-6 4z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a href="{% url 'app_notes:edit_note' note.id %}"
+                                       class="btn btn-outline-info btn-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                             height="20px">
+                                            <path fill="none" d="M0 0h24v24H0z"/>
+                                            <path d="M19.71 7.04l-2.83-2.83c-.19-.19-.45-.29-.71-.29s-.52.1-.71.29L3.79 16.74a1 1 0 0 0-.29.71v3.76a1 1 0 0 0 1 1H8a1 1 0 0 0 .71-.29l12.5-12.5a1 1 0 0 0 .29-.71V7.75a1 1 0 0 0-.29-.71zM7.08 20H5v-2.08l10.92-10.92 2.08 2.08L7.08 20zm10.44-9.48l-2.08-2.08l1.52-1.52l2.08 2.08l-1.52 1.52z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a href="{% url 'app_notes:delete' note.id %}">
+                                        <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" height="20px"
+                                             viewBox="0 0 448 512">
+                                            <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -36,11 +66,31 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ note.title }}</h5>
                             <p class="card-text">{{ note.body }}</p>
-                            <div class="btn-group" role="group" aria-label="">
-                                <i class="fas fa-check"></i> <!--  позначки виконаної нотатки -->
-                                <a href="{% url 'app_notes:detail' note.id %}" class="btn btn-outline-secondary btn-sm">Details</a>
+                            <div class="row">
+                                <div class="col">
+                                <svg class="done-icon" xmlns="http://www.w3.org/2000/svg" height="20px"
+                                         viewBox="0 0 512 512">
+                                        <path d="M369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/>
+                                    </svg> <!--  позначки виконаної нотатки -->
+                                 </div>
+                                <div class="col">
+                                    <a href="{% url 'app_notes:detail' note.id %}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                             height="20px">
+                                            <path fill="none" d="M0 0h24v24H0z"/>
+                                            <path d="M12 17.27L18.18 12 12 6.73 11 7.8l4.2 4.2-4.2 4.2 1 1.07zM12 4C6.48 4 2 6.69 2 10s4.48 6 10 6 10-2.69 10-6-4.48-6-10-6zm0 10c-3.58 0-6-1.79-6-4s2.42-4 6-4 6 1.79 6 4-2.42 4-6 4z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                                 <!-- клас кнопки -->
-                                <a href="{% url 'app_notes:delete' note.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+                                <div class="col">
+                                    <a href="{% url 'app_notes:delete' note.id %}">
+                                        <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" height="20px"
+                                             viewBox="0 0 448 512">
+                                            <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                                 <!--  клас кнопки -->
                             </div>
                         </div>
