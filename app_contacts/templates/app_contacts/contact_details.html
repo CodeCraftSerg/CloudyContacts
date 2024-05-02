@@ -79,26 +79,34 @@
             {% endif %}
         </div>
     </div>
+    <nav>
+    <div style="display: flex; align-items: center;">
+                <div clas="col-6 col-12-xsmall">
+                    {% csrf_token %}
+                    <a href="{% url 'app_contacts:contact_update' contact.id %}" class="button">
+                        Update
+                    </a>
+                </div>
+                <div clas="col-6 col-12-xsmall" style="margin-right: 2%; margin-left: 2%">
+                    {% csrf_token %}
+                    <a href="{% url 'app_contacts:delete_contact' contact.id %}" class="button">
+                        Delete
+                    </a>
+                </div>
+                <div clas="col-6 col-12-xsmall">
+                    <a href="{% url 'app_contacts:contacts' %}" class="button">
+                        Back
+                    </a>
+                </div>
 
+    </div>
+    </nav>
 
 </section>
 <section id="bt" class="wrapper style1 fade-up">
     <div class="inner">
         <div class="split style1">
-            <div class="row gtr-uniform">
-                <div class="col-6 col-12-xsmall">
-                    <form action="{% url 'app_contacts:contact_update' contact.id %}" method="get">
-                        {% csrf_token %}
-                        <button class="btn" type="submit">Update contact</button>
-                    </form>
-                </div>
-                <div class="col-6 col-12-xsmall">
-                    <form method="post" action="{% url 'app_contacts:delete_contact' contact.id %}">
-                        {% csrf_token %}
-                        <button type="submit" class="button">Delete contact</button>
-                    </form>
-                </div>
-            </div>
+
         </div>
     </div>
 </section>
