@@ -65,6 +65,7 @@
                     <div class="row gtr-uniform">
                         <div class="col-6 col-12-xsmall">
                             <input type="text" class="form-control" placeholder="https://facebook.com/" name="facebook">
+                            {{ form.errors.facebook }}
                         </div>
                     </div>
                     <span>Instagram</span>
@@ -72,12 +73,14 @@
                         <div class="col-6 col-12-xsmall">
                             <input type="text" class="form-control" placeholder="https://instagram.com/"
                                    name="instagram">
+                            {{ form.errors.instagram }}
                         </div>
                     </div>
                     <span>Tiktok</span>
                     <div class="row gtr-uniform">
                         <div class="col-6 col-12-xsmall">
                             <input type="text" class="form-control" placeholder="https://tiktok.com/" name="tiktok">
+                            {{ form.errors.tiktok }}
                         </div>
                     </div>
 
@@ -102,9 +105,15 @@
                         </div>
                     </div>
 
-                    <div class="row gtr-uniform">
-                        <div clas="col-6 col-12-xsmall">
+                    <div class="row gtr-uniform" style="margin-top: 10px">
+                        <div clas="col-6 col-12-xsmall" >
                             <button class="btn" type="submit">Save</button>
+                        </div>
+                        <div clas="col-6 col-12-xsmall" >
+                            <a href="{% url 'app_contacts:add_contact' %}" class="button">Reset</a>
+                        </div>
+                        <div clas="col-6 col-12-xsmall" >
+                            <a href="{% url 'app_contacts:contacts' %}" class="button">Back</a>
                         </div>
                     </div>
                 </form>
