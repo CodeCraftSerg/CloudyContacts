@@ -88,9 +88,10 @@ def sport_news(request):
     # Render the sport_news template with paginated sport news data
     return render(request, 'app_news/sport_news.html', {'sport_news': sport_news_page})
 
+
 @login_required
 def politic_news(request):
-    # Initialize an empty list to store news
+    # Initialize an empty list to store politic news
     politic_news = []
 
     # URL of the website to scrape news from
@@ -102,23 +103,12 @@ def politic_news(request):
         response.raise_for_status()  # Raise an exception for HTTP errors
     except requests.exceptions.RequestException as e:
         # Return an error message if there's a problem with getting the response
-        return render(
-            request,
-            "app_news/error.html",
-            {"message": "Could not get response from server."},
-        )
+        return render(request, 'app_news/error.html', {'message': 'Could not get response from server.'})
 
-    soup = BeautifulSoup(response.text, "html.parser")
+    soup = BeautifulSoup(response.text, 'html.parser')
 
     # Find the main news container
-    news_containers = soup.find_all(
-        "div",
-        class_=[
-            "c-article-card-bgimage",
-            "c-article-card",
-            "c-article-card--big-headline",
-        ],
-    )
+    news_containers = soup.find_all('div', class_=['c-article-card-bgimage', 'c-article-card', 'c-article-card--big-headline'])
 
     # Get news items from each container
     for container in news_containers:
@@ -161,7 +151,8 @@ def politic_news(request):
         politic_news_page = paginator.page(paginator.num_pages)
 
     # Render the politic_news template with paginated news data
-    return render(request, 'app_news/politic_news.html', {'politic_news': politic_news_page})
+    return render(request, 'app_news/politic_news.html', {'news': politic_news_page})
+
 
 @login_required
 def culture_news(request):
