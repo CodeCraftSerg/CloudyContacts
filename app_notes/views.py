@@ -7,9 +7,18 @@ from .forms import TagForm, NoteForm
 from .models import Tag, Note
 
 
+@login_required
 def main(request):
-    notes = Note.objects.filter(user=request.user).all() if request.user.is_authenticated else []
-    tags = Tag.objects.filter(user=request.user).all() if request.user.is_authenticated else []
+    notes = (
+        Note.objects.filter(user=request.user).all()
+        if request.user.is_authenticated
+        else []
+    )
+    tags = (
+        Tag.objects.filter(user=request.user).all()
+        if request.user.is_authenticated
+        else []
+    )
     return render(request, "app_notes/notes.html", {"notes": notes, "tags": tags})
 
 
@@ -71,16 +80,15 @@ def delete_note(request, note_id):
 
 @login_required
 def search(request):
-    if 'query' in request.GET:
-        query = request.GET['query']
+    if "query" in request.GET:
+        query = request.GET["query"]
         notes = Note.objects.filter(
-            Q(title__icontains=query) | Q(body__icontains=query),
-            user=request.user
+            Q(title__icontains=query) | Q(body__icontains=query), user=request.user
         )
         # search_notes = pagination(request, notes)
-        return render(request, 'app_notes/search_results.html', {'notes': notes})
+        return render(request, "app_notes/search_results.html", {"notes": notes})
     else:
-        return redirect(to='app_notes:notes')
+        return redirect(to="app_notes:notes")
 
 
 @login_required
@@ -88,7 +96,7 @@ def edit_note(request, note_id):
     note = get_object_or_404(Note, pk=note_id, user=request.user)
     tags = Tag.objects.filter(user=request.user).all()
 
-    if request.method == 'POST':
+    if request.method == "POST":
         form = NoteForm(request.POST, instance=note)
         if form.is_valid():
             edited_note = form.save(commit=False)
@@ -101,21 +109,41 @@ def edit_note(request, note_id):
             for tag_ in choice_tags.iterator():
                 edited_note.tag.add(tag_)
 
-            return redirect(to='app_notes:notes')
+            return redirect(to="app_notes:notes")
         else:
-            return render(request, 'app_notes/edit_note.html', {'note': note, 'tags': tags, 'form': form,
-                                                            })
+            return render(
+                request,
+                "app_notes/edit_note.html",
+                {
+                    "note": note,
+                    "tags": tags,
+                    "form": form,
+                },
+            )
 
     form = NoteForm(instance=note)
-    return render(request, 'app_notes/edit_note.html', {'note': note, 'tags': tags, 'form': form,
-                                                    })
+    return render(
+        request,
+        "app_notes/edit_note.html",
+        {
+            "note": note,
+            "tags": tags,
+            "form": form,
+        },
+    )
 
 
 @login_required
 def sort(request):
-    if request.method == 'GET':
-        selected_tags = request.GET.getlist('selected_tags')
-        notes = Note.objects.filter(tag__name__in=selected_tags, user=request.user).distinct()
-        return render(request, 'app_notes/search_results.html', {'notes': notes, 'selected_tags': selected_tags})
+    if request.method == "GET":
+        selected_tags = request.GET.getlist("selected_tags")
+        notes = Note.objects.filter(
+            tag__name__in=selected_tags, user=request.user
+        ).distinct()
+        return render(
+            request,
+            "app_notes/search_results.html",
+            {"notes": notes, "selected_tags": selected_tags},
+        )
     else:
-        return redirect(to='app_notes:notes')
+        return redirect(to="app_notes:notes")

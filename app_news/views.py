@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
+@login_required
 def main(request):
     return render(request, "app_news/news_page.html")
 
