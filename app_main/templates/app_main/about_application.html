@@ -3,53 +3,129 @@
 {% block intro %}
 {% load static %}
 
-<section id="app_cloudy" class="wrapper style3 fade-up">
+<section id="app_cloudy" class="wrapper style3 fade-up" xmlns="http://www.w3.org/1999/html">
     <div class="inner">
-        <h2>What we do</h2>
-        <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada
-            quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit
-            quis lorem.</p>
+        <h2>What is CloudyContacts and how it works</h2>
+        <p>Web application built with the Django framework that provides users with tools to manage contacts and notes,
+            upload files to cloud storage, and receive news summaries. The application includes authentication
+            mechanisms to ensure the privacy and security of user data.</p>
         <div class="features">
             <section>
-                <span class="icon solid major fa-code"></span>
-                <h3>Lorem ipsum amet</h3>
-                <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
-                    ultricies erat dapibus.</p>
+                <span class="icon solid major fa-laptop-code"></span>
+                <h3>Technologies used</h3>
+                <div style="overflow:auto;">
+                    <div style="float:left;">
+                        <h4><u>Front-end</u></h4>
+                        <img src="{% static 'app_main/img_about/html-five.svg' %}" style="width: 20px; height: 20px;"/>
+                        HTML
+                        <br>
+                        <img src="{% static 'app_main/img_about/css3-logo.svg' %}" style="width: 20px; height: 20px;"/>
+                        CSS
+                        <br>
+                        <img src="{% static 'app_main/img_about/js.svg' %}" style="width: 20px; height: 20px;"/>
+                        JavaScript
+                    </div>
+                    <div style="float:right;">
+                        <h4><u>Back-end</u></h4>
+                        <img src="{% static 'app_main/img_about/python.svg' %}" style="width: 20px; height: 20px;"/>
+                        Python
+                        <br>
+                        <img src="{% static 'app_main/img_about/django.svg' %}" style="width: 20px; height: 20px;"/>
+                        Django
+                        <br>
+                        <img src="{% static 'app_main/img_about/pgsql.svg' %}" style="width: 20px; height: 20px;"/>
+                        PostgreSQL
+                    </div>
+                </div>
+                <p></p>
+                <div style="overflow:auto;">
+                    <div style="float:left;">
+                        <h4><u>Utilites</u></h4>
+                        <img src="{% static 'app_main/img_about/jb-pycharm.svg' %}" style="width: 20px; height: 20px;"/>
+                        PyCharm
+                        <br>
+                        <img src="{% static 'app_main/img_about/vscode.svg' %}" style="width: 20px; height: 20px;"/>
+                        VS Code
+                        <br>
+                        <img src="{% static 'app_main/img_about/trello-logo.svg' %}"
+                             style="width: 20px; height: 20px;"/>
+                        Trello
+                        <br>
+                        <img src="{% static 'app_main/img_about/github-octocat.svg' %}"
+                             style="width: 20px; height: 20px;"/>
+                        GitHub
+                    </div>
+                    <div style="float:right;">
+                        <h4><u>and...</u></h4>
+                        <p></p>
+                        <img src="{% static 'app_main/img_about/teamwork.svg' %}" style="width: 20px; height: 20px;"/>
+                        Teamwork
+                    </div>
+                </div>
             </section>
             <section>
-                <span class="icon solid major fa-lock"></span>
-                <h3>Aliquam sed nullam</h3>
-                <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
-                    ultricies erat dapibus.</p>
+                <span class="icon solid major fa-user"></span>
+                <h3>User authentication</h3>
+                The application has an authentication mechanism:
+                <ul>
+                    <li>the web interface provides access to its functions only to registered users;</li>
+                    <li>each registered user has access only to their own data and files;</li>
+                    <li>implemented a password recovery mechanism for users by email.</li>
+                    Data is validated during the registration of a new user.
+                </ul>
             </section>
             <section>
-                <span class="icon solid major fa-cog"></span>
-                <h3>Sed erat ullam corper</h3>
-                <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
-                    ultricies erat dapibus.</p>
+                <span class="icon solid major fa-address-card"></span>
+                <h3>Contacts</h3>
+                An authorized user using the application can:
+                <ul>
+                    <li>save contacts with names, addresses, phone numbers, emails, and birthdays to the contact book;
+                    </li>
+                    <li>display a list of contacts whose birthday is within a specified number of days from the current
+                        date;
+                    </li>
+                    <li>search for contacts among the contacts in the directory;</li>
+                    <li>edit and delete entries from the contact book.</li>
+                    The application validates the contact data when creating or editing an entry and notifies the user
+                    in case of incorrect entry.
+                </ul>
             </section>
             <section>
-                <span class="icon solid major fa-desktop"></span>
-                <h3>Veroeros quis lorem</h3>
-                <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
-                    ultricies erat dapibus.</p>
+                <span class="icon solid major fa-paperclip"></span>
+                <h3>Notes</h3>
+                An authorized user using the application can:
+                <ul>
+                    <li>store notes with text information;</li>
+                    <li>search notes;</li>
+                    <li>edit and delete notes;</li>
+                    <li>add 'tags' to notes (keywords describing the topic and subject of the record);</li>
+                    <li>search and sort notes by keywords (tags).</li>
+                </ul>
             </section>
             <section>
-                <span class="icon solid major fa-link"></span>
-                <h3>Urna quis bibendum</h3>
-                <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
-                    ultricies erat dapibus.</p>
+                <span class="icon solid major fa-cloud"></span>
+                <h3>Files</h3>
+                An authorized user using the application can:
+                <ul>
+                    <li>upload files to the cloud service and access them;</li>
+                    <li>sort files by category (images, documents, videos, etc.);</li>
+                    <li>filter files by the selected category.</li>
+                </ul>
             </section>
             <section>
-                <span class="icon major fa-gem"></span>
-                <h3>Aliquam urna dapibus</h3>
-                <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed
-                    ultricies erat dapibus.</p>
+                <span class="icon major fa-newspaper"></span>
+                <h3>News</h3>
+                An authorized user using the application can:
+                <ul>
+                    <li>View a summary of the day's news.
+                        Namely, select one of the proposed categories of news (sports, politics, or finance), and the
+                        application will show the headlines of the latest news, with the ability to go to the resource
+                        with the
+                        news.
+                    </li>
+                </ul>
             </section>
         </div>
-        <ul class="actions">
-            <li><a href="generic.html" class="button">Learn more</a></li>
-        </ul>
     </div>
 </section>
 

@@ -1,0 +1,44 @@
+{% extends 'app_main/base.html' %}
+
+{% block notes %}
+{% if user.is_authenticated %}
+
+<section id="five" class="wrapper style1 fade-up">
+    <div class="inner">
+        <h2>Edit a Note</h2>
+
+        <div class="form-box shadow-lg bg-body-tertiary rounded-5">
+            <form method="POST" action="{% url 'app_notes:edit_note' note_id=note.id %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Name:</label>
+                    {{ form.title }}
+                    <span>{{ form.errors.title }}</span>
+                </div>
+                <div class="form-group">
+                    <label>Description:</label>
+                    {{ form.body }}
+                    <span>{{ form.errors.body }}</span>
+                </div>
+                <div class="form-group">
+                    <label> Select Tags:
+                        <select name="tags" multiple="multiple" required>
+                            {% for tag in tags %}
+                            <option value="{{tag.name}}">{{tag.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+        {% else %}
+        <div style="text-align: center;">
+            <h2>Sign up or login to your account!</h2>
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+
+{% endblock %}

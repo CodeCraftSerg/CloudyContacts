@@ -1,0 +1,67 @@
+{% extends 'app_main/base.html' %}
+
+{% block notes %}
+{% if user.is_authenticated %}
+<section id="five" class="wrapper style1 fade-up">
+    <div class="inner">
+        <h2>Search Results</h2>
+
+        <a href="/app_notes" class="button small">to the list of notes</a>
+        <p></p>
+
+        <div class="box alt">
+            <div class="row gtr-uniform">
+                {% if notes %}
+                {% for note in notes %}
+                {% if not note.is_done %}
+                <div class="col-4"> <!-- Один блок по три в ряд -->
+                    <div class="card mb-3"> <!--  клас mb-3 для відступу між картками -->
+                        <div class="card-body">
+                            <h5 class="card-title">{{ note.title }}</h5>
+                            <p class="card-text">{{ note.body }}</p>
+                            <div class="btn-group" role="group" aria-label="">
+                                <a href="{% url 'app_notes:set_done' note.id %}"
+                                   class="btn btn-outline-secondary btn-sm">Done</a>
+                                <a href="{% url 'app_notes:detail' note.id %}" class="btn btn-outline-secondary btn-sm">Details</a>
+                                <a href="{% url 'app_notes:edit_note' note.id %}" class="btn btn-outline-info btn-sm">Edit</a>
+                                <a href="{% url 'app_notes:delete' note.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <!-- Якщо нотатка вже виконана -->
+                <div class="col-4"> <!-- Один блок по три в ряд -->
+                    <div class="card mb-3"> <!--  mb-3 для відступу між картками -->
+                        <div class="card-body">
+                            <h5 class="card-title">{{ note.title }}</h5>
+                            <p class="card-text">{{ note.body }}</p>
+                            <div class="btn-group" role="group" aria-label="">
+                                <i class="fas fa-check"></i> <!--  позначки виконаної нотатки -->
+                                <a href="{% url 'app_notes:detail' note.id %}" class="btn btn-outline-secondary btn-sm">Details</a>
+                                <!-- клас кнопки -->
+                                <a href="{% url 'app_notes:delete' note.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+                                <!--  клас кнопки -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% else %}
+                <p class="text-center">No notes found.</p>
+                {% endif %}
+            </div>
+        </div>
+        <br>
+
+        {% else %}
+        <div style="text-align: center;">
+            <h2>Sign up or login to your account!</h2>
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+
+{% endblock %}
