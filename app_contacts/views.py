@@ -10,6 +10,7 @@ from app_contacts.forms import ContactForm, AddressForm
 from app_contacts.models import Contact, Address
 
 
+@login_required
 def main(request, page=1):
     contacts = Contact.objects.all().order_by('name')
     total_contacts = contacts.count()
@@ -51,10 +52,11 @@ def main(request, page=1):
     except EmptyPage:
         contacts_on_page = paginator.page(paginator.num_pages)
 
-
     return render(request, "app_contacts/contacts.html",
                   context={'contacts': contacts_on_page, 'error_message': error_message,
                            'total_contacts': total_contacts})
+
+
 
 
 @login_required
@@ -69,19 +71,33 @@ def add_contact(request):
             address = form2.save(commit=False)
             address.contact = contact
             address.save()
-            messages.success(request, f"Contact '{form.cleaned_data['name']}' {form.cleaned_data['surname']}' added")
+            messages.success(
+                request,
+                f"Contact '{form.cleaned_data['name']}' {form.cleaned_data['surname']}' added",
+            )
             return redirect(to="app_contacts:contacts")
         else:
-            return render(request, "app_contacts/add_contact.html", context={'form': form, 'form2': form2})
-    return render(request, "app_contacts/add_contact.html", context={'form': ContactForm(), 'form2': AddressForm()})
+            return render(
+                request,
+                "app_contacts/add_contact.html",
+                context={"form": form, "form2": form2},
+            )
+    return render(
+        request,
+        "app_contacts/add_contact.html",
+        context={"form": ContactForm(), "form2": AddressForm()},
+    )
 
 
 @login_required
 def contact_details(request, contact_id):
     a = get_object_or_404(Contact, id=contact_id)
     b = get_object_or_404(Address, contact_id=contact_id)
-    return render(request, "app_contacts/contact_details.html",
-                  context={'Title': 'Contact details', 'contact': a, 'address': b})
+    return render(
+        request,
+        "app_contacts/contact_details.html",
+        context={"Title": "Contact details", "contact": a, "address": b},
+    )
 
 
 @login_required
@@ -113,14 +129,20 @@ def contact_update(request, contact_id=None):
             address.contact = contact
             address.save()
             if a:
-                messages.success(request,
-                                 f"Contact '{form.cleaned_data['name']} {form.cleaned_data['surname']}' updated")
+                messages.success(
+                    request,
+                    f"Contact '{form.cleaned_data['name']} {form.cleaned_data['surname']}' updated",
+                )
             else:
-                messages.success(request, f"Contact '{form.cleaned_data['name']} {form.cleaned_data['surname']}' added")
+                messages.success(
+                    request,
+                    f"Contact '{form.cleaned_data['name']} {form.cleaned_data['surname']}' added",
+                )
             # return redirect(reverse('app_contacts:contact_update', args=[contact_id]))
             return redirect(to="app_contacts:contact_details", contact_id=contact_id)
     else:
         form = ContactForm(instance=a, initial={'mobile_phone': a.mobile_phone,
                                                 'birthdate': a.birthdate})
     return render(request, "app_contacts/contact_update.html", context={'form': form, 'contact': a, 'address': b})
+
 

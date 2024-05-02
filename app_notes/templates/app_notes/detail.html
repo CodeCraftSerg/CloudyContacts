@@ -1,0 +1,33 @@
+{% extends 'app_main/base.html' %}
+
+{% block notes %}
+{% load extract_tags %}
+{% load static %}
+
+<section id="five" class="wrapper style1 fade-up">
+    <div class="inner">
+        <h2>Note Details</h2>
+
+        <a href="/app_notes" class="button small">to the list of notes</a>
+        <p></p>
+
+        <h3>{{ note.title }}</h3>
+        <div class="row">
+            <div class="col-6 col-12-medium">
+                <ul class="alt">
+                    <li>Description: <b>{{ note.body }}</b></li>
+                    <li>Time of creation: <i>{{ note.created_at|date:"y-m-d h:i A" }}</i></li>
+                    {% if note.is_done %}
+                    <li>Status: Completed</li>
+                    {% else %}
+                    <li>Status: <i>Not implemented</i></li>
+                    {% endif %}
+                    <li>Tags: <small>{{ note.tag|tag_filter }}</small></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
