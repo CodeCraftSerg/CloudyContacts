@@ -10,6 +10,7 @@ import requests
 def main(request):
     return render(request, "app_news/news_page.html")
 
+
 @login_required
 def sport_news(request):
     # Initialize an empty list to store sport news
@@ -73,11 +74,13 @@ def sport_news(request):
     # Check if any sport news found
     if not sport_news:
         # Return an error message if no sport news found
-        return render(request, 'app_news/error.html', {'message': 'No sport news found.'})
+        return render(
+            request, "app_news/error.html", {"message": "No sport news found."}
+        )
 
     # Paginate the news
     paginator = Paginator(sport_news, 5)  # Show 5 news per page
-    page_number = request.GET.get('page')
+    page_number = request.GET.get("page")
     try:
         sport_news_page = paginator.page(page_number)
     except PageNotAnInteger:
@@ -86,7 +89,8 @@ def sport_news(request):
         sport_news_page = paginator.page(paginator.num_pages)
 
     # Render the sport_news template with paginated sport news data
-    return render(request, 'app_news/sport_news.html', {'sport_news': sport_news_page})
+    return render(request, "app_news/sport_news.html", {"sport_news": sport_news_page})
+
 
 
 @login_required
@@ -138,11 +142,13 @@ def politic_news(request):
     # Check if any news found
     if not politic_news:
         # Return an error message if no news found
-        return render(request, 'app_news/error.html', {'message': 'No political news available.'})
+        return render(
+            request, "app_news/error.html", {"message": "No political news available."}
+        )
 
     # Paginate the news
     paginator = Paginator(politic_news, 5)  # Show 5 news per page
-    page_number = request.GET.get('page')
+    page_number = request.GET.get("page")
     try:
         politic_news_page = paginator.page(page_number)
     except PageNotAnInteger:
@@ -152,6 +158,7 @@ def politic_news(request):
 
     # Render the politic_news template with paginated news data
     return render(request, 'app_news/politic_news.html', {'news': politic_news_page})
+
 
 
 @login_required
@@ -207,11 +214,13 @@ def culture_news(request):
     # Check if any culture news found
     if not culture_news:
         # Return an error message if no culture news found
-        return render(request, 'app_news/error.html', {'message': 'No culture news found.'})
+        return render(
+            request, "app_news/error.html", {"message": "No culture news found."}
+        )
 
     # Paginate the news
     paginator = Paginator(culture_news, 5)  # Show 5 news per page
-    page_number = request.GET.get('page')
+    page_number = request.GET.get("page")
     try:
         culture_news_page = paginator.page(page_number)
     except PageNotAnInteger:
@@ -220,4 +229,6 @@ def culture_news(request):
         culture_news_page = paginator.page(paginator.num_pages)
 
     # Render the culture_news template with paginated culture news data
-    return render(request, 'app_news/culture_news.html', {'culture_news': culture_news_page})
+    return render(
+        request, "app_news/culture_news.html", {"culture_news": culture_news_page}
+    )
