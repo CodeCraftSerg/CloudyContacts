@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from bs4 import BeautifulSoup
 import requests
 
@@ -9,7 +10,7 @@ import requests
 def main(request):
     return render(request, "app_news/news_page.html")
 
-
+@login_required
 def sport_news(request):
     # Initialize an empty list to store sport news
     sport_news = []
@@ -72,17 +73,25 @@ def sport_news(request):
     # Check if any sport news found
     if not sport_news:
         # Return an error message if no sport news found
-        return render(
-            request, "app_news/error.html", {"message": "No sport news found."}
-        )
+        return render(request, 'app_news/error.html', {'message': 'No sport news found.'})
 
-    # Render the sport_news template with sport news data
-    return render(request, "app_news/sport_news.html", {"sport_news": sport_news})
+    # Paginate the news
+    paginator = Paginator(sport_news, 5)  # Show 5 news per page
+    page_number = request.GET.get('page')
+    try:
+        sport_news_page = paginator.page(page_number)
+    except PageNotAnInteger:
+        sport_news_page = paginator.page(1)
+    except EmptyPage:
+        sport_news_page = paginator.page(paginator.num_pages)
 
+    # Render the sport_news template with paginated sport news data
+    return render(request, 'app_news/sport_news.html', {'sport_news': sport_news_page})
 
+@login_required
 def politic_news(request):
     # Initialize an empty list to store news
-    news = []
+    politic_news = []
 
     # URL of the website to scrape news from
     base_url = "https://suspilne.media/"
@@ -134,17 +143,27 @@ def politic_news(request):
             # Skip if any attribute error occurs
             continue
 
-        news.append(result)
+        politic_news.append(result)
 
     # Check if any news found
-    if not news:
+    if not politic_news:
         # Return an error message if no news found
-        return render(request, "app_news/error.html", {"message": "No news found."})
+        return render(request, 'app_news/error.html', {'message': 'No political news available.'})
 
-    # Render the politic_news template with news data
-    return render(request, "app_news/politic_news.html", {"news": news})
+    # Paginate the news
+    paginator = Paginator(politic_news, 5)  # Show 5 news per page
+    page_number = request.GET.get('page')
+    try:
+        politic_news_page = paginator.page(page_number)
+    except PageNotAnInteger:
+        politic_news_page = paginator.page(1)
+    except EmptyPage:
+        politic_news_page = paginator.page(paginator.num_pages)
 
+    # Render the politic_news template with paginated news data
+    return render(request, 'app_news/politic_news.html', {'politic_news': politic_news_page})
 
+@login_required
 def culture_news(request):
     # Initialize an empty list to store culture news
     culture_news = []
@@ -197,9 +216,17 @@ def culture_news(request):
     # Check if any culture news found
     if not culture_news:
         # Return an error message if no culture news found
-        return render(
-            request, "app_news/error.html", {"message": "No culture news found."}
-        )
+        return render(request, 'app_news/error.html', {'message': 'No culture news found.'})
 
-    # Render the culture_news template with culture news data
-    return render(request, "app_news/culture_news.html", {"culture_news": culture_news})
+    # Paginate the news
+    paginator = Paginator(culture_news, 5)  # Show 5 news per page
+    page_number = request.GET.get('page')
+    try:
+        culture_news_page = paginator.page(page_number)
+    except PageNotAnInteger:
+        culture_news_page = paginator.page(1)
+    except EmptyPage:
+        culture_news_page = paginator.page(paginator.num_pages)
+
+    # Render the culture_news template with paginated culture news data
+    return render(request, 'app_news/culture_news.html', {'culture_news': culture_news_page})
