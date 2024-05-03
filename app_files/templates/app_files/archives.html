@@ -1,0 +1,40 @@
+{% extends 'app_main/base.html' %}
+
+{% block files_page %}
+{% load static %}
+
+<section class="wrapper style1 fade-up">
+    <div class="inner">
+        <h2>Your Archives</h2>
+        <div class="table-wrapper">
+            <table class="alt">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Original filename</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for f in archive_list %}
+                    <tr>
+                        <td>{{ f.file_description }}</td>
+                        <td><a href="{{ f.filepath.url }}">{{ f.filename }}</a></td>
+                        <td><a href="{% url 'app_files:edit_description' f.id %}" class="button">Edit</a></td>
+                        <td><a href="{% url 'app_files:delete_file' f.id %}" class="button">Delete</a></td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4">No archives available.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    <a href="{% url 'app_files:files_page' %}" class="button" style="margin-right: 30px;">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i> All Files
+        </a>
+    </div>
+</section>
+{% endblock %}
