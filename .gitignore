@@ -61,7 +61,7 @@ app_notes/migrations
 app_sort/migrations
 users/migrations
 poetry.lock
-
+postgres-data
 
 # Installer logs
 pip-log.txt
