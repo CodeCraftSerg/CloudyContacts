@@ -8,7 +8,7 @@ CloudyContacts is a web application built with the Django framework that provide
 ## Requirements
 API keys are required to run this application. Obtain the necessary keys at the addresses below:
 * Create an account on **[openweathermap.org](https://openweathermap.org/)**, then go to **[openweathermap.org/api_keys](https://home.openweathermap.org/api_keys)** and create an API key for access.
-* Create an account on **[abstractapi.com](https://www.abstractapi.com)**. Then, go to **[abstractapi.com/api](https://app.abstractapi.com/api/ip-geolocation/tester)** and create an API key for access."
+* Create an account on **[abstractapi.com](https://www.abstractapi.com)**. Then, go to **[abstractapi.com/api](https://app.abstractapi.com/api/ip-geolocation/tester)** and create an API key for access.
 
 ## Run Locally
 ```bash
@@ -38,9 +38,14 @@ Also use your personal data for email box (it's for recovering password):
 
 After that, save the file as .env
 
+Open the settings.py file and leave the PostgreSQL Database connection uncommented.
+Other connections should be commented out.
+You can also use the database connection that is more convenient for you.
+If you use a cloud database connection, you do not need to run Docker Compose file.
+
 Run Docker Compose file
 ```bash
-docker compose up
+  docker compose up
 ```
 Make migrations for your database
 ```bash 
@@ -54,7 +59,7 @@ Start the server
 ```bash
   python manage.py runserver
 ```
-By default application will run on [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+By default, application will run on [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 ## Our Team:
 * Developer: [Iurii Popov](https://github.com/ShuguruiUA)

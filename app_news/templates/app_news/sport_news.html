@@ -16,7 +16,7 @@
                  style="margin: 0 0 20px; border: 1px solid #ccc; border-radius: 10px; padding: 10px;">
                 <p><strong>{{ news.time }}</strong></p>
                 <p><strong>{{ news.sport }}</strong>: {{ news.news }}</p>
-                <p><a href="{{ news.url }}" class="button" target="_blank">Read More</a></p>
+                <p><a href="{{ news.url }}" class="button" target="_blank" rel="nofollow noopener noreferrer">Read More</a></p>
             </div>
             {% empty %}
             <p>No sport news available</p>
