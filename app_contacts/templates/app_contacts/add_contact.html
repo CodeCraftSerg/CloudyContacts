@@ -3,7 +3,6 @@
 {% block contacts %}
 {% load static %}
 
-
 <section id="five" class="wrapper style1 fade-up">
     <div class="inner">
         <h2>Add contact</h2>
@@ -21,41 +20,42 @@
                     {% endfor %}
                 </div>
                 {% endif %}
+                <span style="font-size: 10pt">Fields marked '*' are required</span>
                 <form method="post" action="{% url 'app_contacts:add_contact' %}">
                     {% csrf_token %}
-                    <span>Enter a Name and Surname:</span>
+                    <span>Input Name and Surname:</span>
                     <div class="row gtr-uniform">
                         <div class="col-6 col-12-xsmall">
-                            <input type="text" style="form-class" placeholder="Name" name="name">
-                            {{ form.errors.name }}
+                            <input type="text" style="form-class" placeholder="*Name" name="name">
+                            <ul style="color: red; font-size: 14pt">{{ form.errors.name }}</ul>
                         </div>
                         <div class="col-6 col-12-xsmall">
                             <input type="text" style="form-class" placeholder="Surname" name="surname">
                         </div>
                     </div>
-                    <span>Enter Email:</span>
+                    <span>Input Email:</span>
                     <div class="row gtr-uniform">
                         <div class="col-6 col-12-xsmall">
                             <input type="text" style="form-class" placeholder="name@email.com" name="email">
-                            {{ form.errors.email }}
+                            <ul style="color: red; font-size: 14pt">{{ form.errors.email }}</ul>
                         </div>
                     </div>
-                    <span>Enter Phone numbers:</span>
+                    <span>Input Phone numbers:</span>
                     <div class="row gtr-uniform">
                         <div class="col-6 col-12-xsmall">
-                            mobile<input type="text" style="form-class" placeholder="+380(XX)XXX-XX-XX" name="mobile_phone">
-                            {{ form.errors.mobile_phone }}
+                           mobile<input type="text" style="form-class" placeholder="+380(XX)XXX-XX-XX" name="mobile_phone">
+                           <ul style="color: red; font-size: 14pt">{{ form.errors.mobile_phone }}</ul>
                         </div>
                         <div class="col-6 col-12-xsmall">
                             work<input type="text" style="form-class" placeholder="+380(XX)XXX-XX-XX" name="work_phone">
-                            {{ form.errors.work_phone }}
+                            <ul style="color: red; font-size: 14pt">{{ form.errors.work_phone }}</ul>
                         </div>
                         <div class="col-6 col-12-xsmall">
                             home<input type="text" style="form-class" placeholder="+380(XX)XXX-XX-XX" name="home_phone">
-                            {{ form.errors.home_phone }}
+                            <ul style="color: red; font-size: 14pt">{{ form.errors.home_phone }}</ul>
                         </div>
                     </div>
-                    <span>Enter Birthday:</span>
+                    <span>Input Birthday:</span>
                     <div class="row gtr-uniform">
                         <div class="col-6 col-12-xsmall">
                             <input type="text" class="form-control" placeholder="dd/mm/YYYY" name="birthdate">
@@ -65,7 +65,7 @@
                     <div class="row gtr-uniform">
                         <div class="col-6 col-12-xsmall">
                             <input type="text" class="form-control" placeholder="https://facebook.com/" name="facebook">
-                            {{ form.errors.facebook }}
+                            <ul style="color: red; font-size: 14pt">{{ form.errors.facebook }}</ul>
                         </div>
                     </div>
                     <span>Instagram</span>
@@ -73,18 +73,18 @@
                         <div class="col-6 col-12-xsmall">
                             <input type="text" class="form-control" placeholder="https://instagram.com/"
                                    name="instagram">
-                            {{ form.errors.instagram }}
+                            <ul style="color: red; font-size: 14pt">{{ form.errors.instagram }}</ul>
                         </div>
                     </div>
                     <span>Tiktok</span>
                     <div class="row gtr-uniform">
                         <div class="col-6 col-12-xsmall">
                             <input type="text" class="form-control" placeholder="https://tiktok.com/" name="tiktok">
-                            {{ form.errors.tiktok }}
+                            <ul style="color: red; font-size: 14pt">{{ form.errors.tiktok }}</ul>
                         </div>
                     </div>
 
-                    <span>Address:</span>
+                    <span>Input Address:</span>
                     <div class="row gtr-uniform">
 
                         <div class="col-6 col-12-xsmall">
