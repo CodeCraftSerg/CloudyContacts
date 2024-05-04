@@ -121,27 +121,27 @@ WSGI_APPLICATION = "CloudyContacts.wsgi.application"
 # }
 
 # --- koyeb Database ---
-# DATABASES = {
-#     "default": {
-#         "ENGINE": env("KOYEB_ENGINE"),
-#         "NAME": env("KOYEB_NAME"),
-#         "USER": env("KOYEB_USER"),
-#         "PASSWORD": env("KOYEB_PASSWORD"),
-#         "HOST": env("KOYEB_HOST"),
-#     }
-# }
-
-# --- ElephantSQL Database ---
 DATABASES = {
     "default": {
-        "ENGINE": env("ELEPHANT_ENGINE"),
-        "NAME": env("ELEPHANT_DB_NAME_USER"),
-        "USER": env("ELEPHANT_DB_NAME_USER"),
-        "PASSWORD": env("ELEPHANT_PASSWORD"),
-        "HOST": env("ELEPHANT_HOST"),
-        "PORT": env("ELEPHANT_PORT"),
+        "ENGINE": env("KOYEB_ENGINE"),
+        "NAME": env("KOYEB_NAME"),
+        "USER": env("KOYEB_USER"),
+        "PASSWORD": env("KOYEB_PASSWORD"),
+        "HOST": env("KOYEB_HOST"),
     }
 }
+
+# --- ElephantSQL Database ---
+# DATABASES = {
+#     "default": {
+#         "ENGINE": env("ELEPHANT_ENGINE"),
+#         "NAME": env("ELEPHANT_DB_NAME_USER"),
+#         "USER": env("ELEPHANT_DB_NAME_USER"),
+#         "PASSWORD": env("ELEPHANT_PASSWORD"),
+#         "HOST": env("ELEPHANT_HOST"),
+#         "PORT": env("ELEPHANT_PORT"),
+#     }
+# }
 
 
 # Password validation
