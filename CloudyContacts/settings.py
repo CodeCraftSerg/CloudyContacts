@@ -34,7 +34,7 @@ DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = [
     "DJANGO_ALLOWED_HOSTS",
-    "localhost,127.0.0.1,[::1]",
+    "127.0.0.1",
     "cloudy-contacts-grey-1bd53251.koyeb.app/",
 ]
 # ALLOWED_HOSTS = os.getenv(
