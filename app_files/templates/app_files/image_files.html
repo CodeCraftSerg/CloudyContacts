@@ -5,39 +5,41 @@
 
 <section class="wrapper style1 fade-up">
     <div class="inner">
-        <h2 style="padding-left: 1rem;">Your Images</h2>
-
-        {% for p in image_list %}
-        <div class="gallery">
-
-            <div class="image">
-                <img src="{{ p.filepath.url }}" alt="{{ p.file_description }}">
-                <div class="description">{{p.file_description}}</div>
-            </div>
-            {% empty %}
-            <p>No images available.</p>
-            {% endfor %}
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2 style="margin: 0;">Your images</h2>
+            <a href="{% url 'app_files:upload_files' %}" class="button" style="margin-right: 30px;">
+                <i class="fa-solid fa-file-arrow-up" style="margin-right: 8px;"></i>Upload File
+            </a>
+        </div>
+        <div class="table-wrapper", style="margin-top: 40px">
+            <table class="alt">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Download Link</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for f in image_list %}
+                    <tr>
+                        <td>{{ f.file_description }}</td>
+                        <td><a href="{{ f.filepath.url }}">{{ f.filename }}</a></td>
+                        <td><a href="{% url 'app_files:edit_description' f.id %}" class="button">Edit</a></td>
+                        <td><a href="{% url 'app_files:delete_file' f.id %}" class="button">Delete</a></td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4">No images available.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     <a href="{% url 'app_files:files_page' %}" class="button" style="margin-right: 30px;">
             <i class="fa fa-angle-double-left" aria-hidden="true"></i> All Files
         </a>
     </div>
 </section>
-<style>
-    .gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 20px;
-        margin-top: 20px;
-    }
-    .image img {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-    }
-    .description {
-        text-align: center;
-        margin-top: 8px;
-    }
-</style>
 {% endblock %}

@@ -5,8 +5,13 @@
 
 <section class="wrapper style1 fade-up">
     <div class="inner">
-        <h2>Your Videos</h2>
-        <div class="table-wrapper">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2 style="margin: 0;">Your videos</h2>
+            <a href="{% url 'app_files:upload_files' %}" class="button" style="margin-right: 30px;">
+                <i class="fa-solid fa-file-arrow-up" style="margin-right: 8px;"></i>Upload File
+            </a>
+        </div>
+        <div class="table-wrapper", style="margin-top: 40px">
             <table class="alt">
                 <thead>
                     <tr>
