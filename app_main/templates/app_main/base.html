@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{% static 'app_main/css/fontawesome-all.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'users/css/signout.css' %}"/>
     <link rel="stylesheet" href="{% static 'app_main/css/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'app_contacts/css/contact.css' %}"/>
+
 </head>
 <body class="is-preload">
 
@@ -25,6 +27,7 @@
                 {% csrf_token %}
                 <li><a href="{% url 'app_main:root' %}">Welcome</a></li>
                 <li><a href="{% url 'app_contacts:contacts' %}">Contacts</a></li>
+                <li><a href="{% url 'app_contacts:contact_birthday' %}">Birthdays</a></li>
                 <li><a href="{% url 'app_notes:notes' %}">Notes</a></li>
                 <li><a href="{% url 'app_files:files_page' %}">Files</a></li>
                 <li><a href="{% url 'app_news:news_page' %}">News</a></li>
@@ -98,6 +101,7 @@
 <script src="{% static 'app_main/js/util.js' %}"></script>
 <script src="{% static 'app_main/js/main.js' %}"></script>
 <script src="{% static 'app_main/js/skycons.js' %}"></script>
+<script src="{% static 'app_news/news.js' %}"></script>
 <script type="application/x-javascript"> addEventListener("load", function () {
     setTimeout(hideURLbar, 0);
 }, false);

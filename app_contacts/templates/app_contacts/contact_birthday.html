@@ -1,0 +1,79 @@
+{% extends 'app_main/base.html' %}
+
+{% block contacts %}
+{% load static %}
+
+{% if user.is_authenticated %}
+
+<section id="intro" class="wrapper style1 fade-up">
+    <div class="inner">
+        <h2>Birthdays list</h2>
+        <div>
+            Current date: {% now "l, d/m/Y" %}
+
+        </div>
+        <div>Current time: {% now "H:i" %}</div>
+        <form action="{% url 'app_contacts:contact_birthday' %}" method="GET">
+            <label for="period">Select Period:</label>
+            <select name="period" id="period" style="width: 70%">
+                <option value="today" {% if period == "today" %}selected{% endif %}>Today</option>
+                <option value="week" {% if period == "week" %}selected{% endif %}>This Week</option>
+                <option value="month" {% if period == "month" %}selected{% endif %}>This Month</option>
+            </select>
+            <button type="submit" style="margin-top: 20px">Show</button>
+        </form>
+        {% if period == 'today' or period == 'week' %}
+            {% if birthday_contacts %}
+            <div class="row">
+                <div class="col">
+                    <h2>{{ period|capfirst }} Birthdays</h2>
+                    <ul class="birthday-icon">
+                        {% for contact in birthday_contacts %}
+                            <li><a href="/app_contacts/contact_details/{{ contact.id }}/">{{ contact.name }} - {{ contact.birthdate|date:"l, M d" }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                        <p>No birthdays found for this period: {{ period|capfirst }}.</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+        {% if period == 'month' %}
+        {% if passed_this_year or today_birthdays or upcoming_this_month %}
+        <div class="row">
+            <div class="col">
+                <h5>Passed Birthdays</h5>
+                {% if not passed_this_year %}<div style="font-size: 14pt">No birthdays to show.</div>{% endif %}
+                <ul class="birthday-icon">
+                    {% for contact in passed_this_year %}
+                        <li><a href="/app_contacts/contact_details/{{ contact.id }}/">{{ contact.name }} - {{ contact.birthdate|date:"l, M d" }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col">
+                <h5>Today's Birthdays</h5>
+                {% if not today_birthdays %}<div style="font-size: 14pt">No birthdays to show.</div>{% endif %}
+                <ul class="birthday-icon">
+                    {% for contact in today_birthdays %}
+                        <li><a href="/app_contacts/contact_details/{{ contact.id }}/">{{ contact.name }} - {{ contact.birthdate|date:"l, M d" }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col">
+                <h5>Upcoming Birthdays</h5>
+                {% if not upcoming_this_month %}<div style="font-size: 14pt">No birthdays to show.</div>{% endif %}
+                <ul class="birthday-icon">
+                    {% for contact in upcoming_this_month %}
+                        <li><a href="/app_contacts/contact_details/{{ contact.id }}/">{{ contact.name }} - {{ contact.birthdate|date:"l, M d" }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% else %}
+            <p>No birthdays found for this period: {{ period|capfirst}}.</p>
+        {% endif %}
+    </div>
+</section>
+{% endif %}
+{% endif %}
+{% endblock %}
