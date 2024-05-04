@@ -29,21 +29,21 @@
                     <div class="row gtr-uniform">
                         <div class="col-6 col-12-xsmall">
                             <input type="text" class="form-control" name="name" value="{{ form.instance.name }}">
-                            <span>{{ form.errors.name }}</span>
+                            <ul style="color: red; font-size: 14pt">{{ form.errors.name }}</ul>
 
                         </div>
                         <div class="col-6 col-12-xsmall">
-                            <input type="text" class="form-control" placeholder="surname"
+                            <input type="text" class="form-control" name="surname" placeholder="surname"
                                    value="{{ form.instance.surname }}">
-                            <span>{{ form.errors.surname }}</span>
+                            <ul style="color: red; font-size: 14pt">{{ form.errors.surname }}</ul>
                         </div>
                     </div>
                     <span>Update Email:</span>
                     <div class="row gtr-uniform">
                         <div class="col-6 col-12-xsmall">
-                            <input type="text" class="form-control" placeholder="name@email.com"
+                            <input type="text" class="form-control" name="email" placeholder="name@email.com"
                                    value="{{ form.instance.email }}">
-                            <span>{{ form.errors.email }}</span>
+                            <ul style="color: red; font-size: 14pt">{{ form.errors.email }}</ul>
                         </div>
                     </div>
                     <span>Update Phone numbers:</span>
@@ -52,7 +52,7 @@
                             mobile<input type="text" class="form-control" placeholder="+380(XX)XXX-XX-XX"
                                          name="mobile_phone"
                                          value="{{ form.instance.mobile_phone }}">
-                            <span>{{ form.errors.mobile_phone }}</span>
+                            <ul style="color: red; font-size: 14pt">{{ form.errors.mobile_phone }}</ul>
                         </div>
                         <div class="col-6 col-12-xsmall">
                             work<input type="text" class="form-control" placeholder="+380(XX)XXX-XX-XX"
@@ -63,22 +63,22 @@
                         <div class="col-6 col-12-xsmall">
                             home<input type="text" class="form-control" name="home_phone"
                                        value="{{ form.instance.home_phone }}" placeholder="+38(XXX)XXX-XX-XX">
-                            <span>{{ form.errors.home_phone }}</span>
+                            <ul style="color: red; font-size: 14pt">{{ form.errors.home_phone }}</ul>
                         </div>
                     </div>
                     <span>Update Birthday:</span>
                     <div class="row gtr-uniform">
                         <div class="col-6 col-12-xsmall">
                             {{ form.birthdate }}
-                            <span>{{ form.error.birthdate }}</span>
+                            <ul style="color: red; font-size: 14pt">{{ form.error.birthdate }}</ul>
                         </div>
                     </div>
                     <span>Update Facebook link</span>
                     <div class="row gtr-uniform">
                         <div class="col-6 col-12-xsmall">
                             <input type="text" class="form-control" placeholder="https://facebook.com/"
-                                   value="{{ form.instance.facebook }}">
-                            {{ form.errors.facebook }}
+                                   name=facebook value="{{ form.instance.facebook }}">
+                            <ul style="color: red; font-size: 14pt">{{ form.errors.facebook }}</ul>
                         </div>
                     </div>
                     <span>Update Instagram link</span>
@@ -86,7 +86,7 @@
                         <div class="col-6 col-12-xsmall">
                             <input type="text" class="form-control" placeholder="https://instagram.com/"
                                    name="instagram" value="{{ form.instance.instagram }}">
-                            {{ form.errors.instagram }}
+                            <ul style="color: red; font-size: 14pt">{{ form.errors.instagram }}</ul>
                         </div>
                     </div>
                     <span>Update Tiktok link</span>
@@ -94,7 +94,7 @@
                         <div class="col-6 col-12-xsmall">
                             <input type="text" class="form-control" placeholder="https://tiktok.com/" name="tiktok"
                                    value="{{ form.instance.tiktok }}">
-                            {{form.errors.tiktok}}
+                            <ul style="color: red; font-size: 14pt">{{form.errors.tiktok}}</ul>
                         </div>
                     </div>
                     <span>Update address</span>
@@ -114,13 +114,15 @@
                     </div>
                     <div class="row gtr-uniform">
                         <div class="col-6 col-12-xsmall" style="margin-top: 1em">
-                            <input id="is_favorite" type="checkbox" name="is_favorite" {% if form.instance.is_favorite
-                                   %}checked{% endif %}>
+                            <input id="is_favorite" type="checkbox" name="is_favorite"
+                                   {% if form.instance.is_favorite %}checked{% endif %}>
                             <label class="form-label" for="is_favorite">Favorite</label>
                         </div>
                     </div>
 
-                    <button type="submit" class="button" style="margin-top: 1em">Submit</button>
+                    <button type="submit" class="button" style="margin-top: 1em">Update</button>
+                    <a href="{% url 'app_contacts:contact_update' contact.id %}" class="button">Reset</a>
+                    <a href="{% url 'app_contacts:contact_details' contact.id %}" class="button">Back</a>
                 </form>
             </section>
         </div>

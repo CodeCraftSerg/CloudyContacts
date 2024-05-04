@@ -12,26 +12,26 @@ env = environ.Env(
 
 def main(request):
     API_WEATHER_KEY = env("API_WEATHER_KEY")
-    ABSTRACT_API_KEY = env("ABSTRACT_API_KEY")
+    # ABSTRACT_API_KEY = env("ABSTRACT_API_KEY")
     url_1 = (
         "https://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid="
         + API_WEATHER_KEY
     )
 
-    response_ip = requests.get(
-        "https://ipgeolocation.abstractapi.com/v1/?api_key="
-        + ABSTRACT_API_KEY
-        + "&ip_address="
-    )
-    print(response_ip.status_code)
-    print(response_ip.content)
-    if response_ip.status_code == 200:
-        data = response_ip.json()
-        city = data["city"]
-    else:
-        city = "Kyiv"
+    # response_ip = requests.get(
+    #     "https://ipgeolocation.abstractapi.com/v1/?api_key="
+    #     + ABSTRACT_API_KEY
+    #     + "&ip_address="
+    # )
+    # print(response_ip.status_code)
+    # print(response_ip.content)
+    # if response_ip.status_code == 200:
+    #     data = response_ip.json()
+    #     city = data["city"]
+    # else:
+    #     city = "Kyiv"
 
-    # city = "Kyiv"
+    city = "Kyiv"
 
     city_weather = requests.get(url_1.format(city)).json()
 
