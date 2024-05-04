@@ -145,8 +145,10 @@ def contact_birthday(request):
     elif period == 'week':
         start_date = today - timedelta(days=today.weekday())
         end_date = start_date + timedelta(days=6)
-        contacts = Contact.objects.filter(birthdate__range=[start_date, end_date])
-        print("Query week:", contacts.query)
+        contacts = Contact.objects.filter(
+            Q(birthdate__month=start_date.month, birthdate__day__gte=start_date.day) |
+            Q(birthdate__month=end_date.month, birthdate__day__lte=end_date.day)
+        )
     elif period == 'month':
         passed_this_year = Contact.objects.filter(birthdate__month=current_month, birthdate__day__lt=current_day)
         today_birthdays = Contact.objects.filter(birthdate__month=current_month, birthdate__day=current_day)
