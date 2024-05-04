@@ -37,7 +37,6 @@ six==1.16.0
 soupsieve==2.5
 sqlparse==0.5.0
 Twisted==24.3.0
-twisted-iocpsupport==1.0.4
 txaio==23.1.1
 typing_extensions==4.11.0
 tzdata==2024.1
