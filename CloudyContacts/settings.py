@@ -32,11 +32,21 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1,[::1]").split(
-    ","
-)
+ALLOWED_HOSTS = [
+    "DJANGO_ALLOWED_HOSTS",
+    "localhost,127.0.0.1,[::1]",
+    "cloudy-contacts-grey-1bd53251.koyeb.app/",
+]
+# ALLOWED_HOSTS = os.getenv(
+#     "DJANGO_ALLOWED_HOSTS",
+#     "localhost,127.0.0.1,[::1]",
+#     "https://cloudy-contacts-grey-1bd53251.koyeb.app/",
+# ).split(",")
 
+CSRF_TRUSTED_ORIGINS = ["https://cloudy-contacts-grey-1bd53251.koyeb.app/"]
+# CSRF_TRUSTED_ORIGINS = os.getenv(
+#     "https://cloudy-contacts-grey-1bd53251.koyeb.app/"
+# ).split(",")
 
 # Application definition
 
