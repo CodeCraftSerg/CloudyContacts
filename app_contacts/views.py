@@ -16,9 +16,12 @@ from app_contacts.models import Contact, Address
 
 
 def main(request, page=1):
-    contacts = Contact.objects.all().order_by('name')
+    contacts = (
+        Contact.objects.filter(user=request.user).all().order_by('name')
+        if request.user.is_authenticated
+        else []
+    )
     total_contacts = contacts.count()
-
     if not contacts:
         error_message = "You have no contacts"
     else:
@@ -68,6 +71,8 @@ def add_contact(request):
         form2 = AddressForm(request.POST)
 
         if form.is_valid() and form2.is_valid():
+            contact = form.save(commit=False)
+            contact.user = request.user
             contact = form.save()
 
             address = form2.save(commit=False)
@@ -111,6 +116,8 @@ def contact_update(request, contact_id=None):
         form = ContactForm(request.POST, instance=a)
         form2 = AddressForm(request.POST, instance=b)
         if form.is_valid() and form2.is_valid():
+            contact = form.save(commit=False)
+            contact.user = request.user
             contact = form.save()
 
             address = form2.save(commit=False)
@@ -141,18 +148,31 @@ def contact_birthday(request):
     upcoming_this_month = []
 
     if period == 'today':
-        contacts = Contact.objects.filter(birthdate__month=current_month, birthdate__day=current_day)
+        contacts = Contact.objects.filter(birthdate__month=current_month, birthdate__day=current_day, user=request.user)
     elif period == 'week':
         start_date = today - timedelta(days=today.weekday())
         end_date = start_date + timedelta(days=6)
         contacts = Contact.objects.filter(
             Q(birthdate__month=start_date.month, birthdate__day__gte=start_date.day) |
-            Q(birthdate__month=end_date.month, birthdate__day__lte=end_date.day)
+            Q(birthdate__month=end_date.month, birthdate__day__lte=end_date.day),
+            user=request.user
         )
     elif period == 'month':
-        passed_this_year = Contact.objects.filter(birthdate__month=current_month, birthdate__day__lt=current_day)
-        today_birthdays = Contact.objects.filter(birthdate__month=current_month, birthdate__day=current_day)
-        upcoming_this_month = Contact.objects.filter(birthdate__month=current_month, birthdate__day__gt=current_day)
+        passed_this_year = Contact.objects.filter(
+            birthdate__month=current_month,
+            birthdate__day__lt=current_day,
+            user=request.user
+        )
+        today_birthdays = Contact.objects.filter(
+            birthdate__month=current_month,
+            birthdate__day=current_day,
+            user=request.user
+        )
+        upcoming_this_month = Contact.objects.filter(
+            birthdate__month=current_month,
+            birthdate__day__gt=current_day,
+            user=request.user
+        )
         contacts = []
     else:
         contacts = []
