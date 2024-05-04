@@ -99,27 +99,27 @@ WSGI_APPLICATION = "CloudyContacts.wsgi.application"
 # }
 
 # --- PostgreSQL Database ---
-# DATABASES = {
-#     "default": {
-#         "ENGINE": env("DB_ENGINE"),
-#         "NAME": env("DB_NAME"),
-#         "USER": env("DB_USER"),
-#         "PASSWORD": env("DB_PASSWORD"),
-#         "HOST": env("DB_HOST"),
-#         "PORT": env("DB_PORT"),
-#     }
-# }
-
-# --- koyeb Database ---
 DATABASES = {
     "default": {
-        "ENGINE": env("KOYEB_ENGINE"),
-        "NAME": env("KOYEB_NAME"),
-        "USER": env("KOYEB_USER"),
-        "PASSWORD": env("KOYEB_PASSWORD"),
-        "HOST": env("KOYEB_HOST"),
+        "ENGINE": env("DB_ENGINE"),
+        "NAME": env("DB_NAME"),
+        "USER": env("DB_USER"),
+        "PASSWORD": env("DB_PASSWORD"),
+        "HOST": env("DB_HOST"),
+        "PORT": env("DB_PORT"),
     }
 }
+
+# --- koyeb Database ---
+# DATABASES = {
+#     "default": {
+#         "ENGINE": env("KOYEB_ENGINE"),
+#         "NAME": env("KOYEB_NAME"),
+#         "USER": env("KOYEB_USER"),
+#         "PASSWORD": env("KOYEB_PASSWORD"),
+#         "HOST": env("KOYEB_HOST"),
+#     }
+# }
 
 # --- ElephantSQL Database ---
 # DATABASES = {
@@ -175,7 +175,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 LOGIN_URL = "/users/signin"
 LOGIN_REDIRECT_URL = "/"
 
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
 
 # Default primary key field type
