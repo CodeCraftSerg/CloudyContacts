@@ -8,7 +8,7 @@
 <style>
     /* Визначте свій власний клас для значка списку */
     .custom-icon {
-        list-style-image: url('{% static 'app_main/images/contact-ico-small.svg' %}'); /* Вкажіть шлях до вашого значка */
+        list-style-image: url('{% static ' app_main/images/contact-ico-small.svg ' %}'); /* Вкажіть шлях до вашого значка */
     }
 
     /* Задайте розміри для зображення */
@@ -16,78 +16,83 @@
         width: 20px; /* Задайте ширину, наприклад, 20px */
         height: 20px; /* Задайте висоту, наприклад, 20px */
     }
+
     .custom-icon li {
-    padding-left: 5px; /* Задайте значення, яке вам потрібно */
-}
+        padding-left: 5px; /* Задайте значення, яке вам потрібно */
+    }
 </style>
 
 <section id="five" class="wrapper style1 fade-up">
-
     <div class="inner">
-        <h2>Contacts: <span style="color: #312450">{{ total_contacts }}</span></h2>
+        <h2>Contacts</h2>
+        <h3>Number of contacts: <span style="color: #312450">{{ total_contacts }}</span></h3>
+
         {% if messages %}
-            <div class="messages">
-                {% for message in messages %}
-                <span {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</span>
-                {% endfor %}
-            </div>
+        <div class="messages">
+            {% for message in messages %}
+            <span {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>{{ message }}</span>
+            {% endfor %}
+        </div>
         {% endif %}
         {% if error_message %}
-            <div class="alert alert-danger">
-                {{ error_message }}
-            </div>
+        <div class="alert alert-danger">
+            {{ error_message }}
+        </div>
         {% endif %}
         <form method="get">
-        <div>
+            <div>
 
-            <div class="col-6 col-12-xsmall">
-                <form class="input-group">
-                <input type="text" name="q" class="form-control" id="inputText" placeholder="Search: " value=" {{ request.GET.q}}" style="width: 46%; margin-bottom: 5px;">
-                    <div style="display: flex; align-items: center;">
-                        <div style="margin-right: 1%">
-                            <button type="submit">Search</button>
+                <div class="col-6 col-12-xsmall">
+                    <form class="input-group">
+                        <input type="text" name="q" class="form-control" id="inputText" placeholder="Search: "
+                               value=" {{ request.GET.q}}" style="width: 46%; margin-bottom: 5px;">
+                        <div style="display: flex; align-items: center;">
+                            <div style="margin-right: 1%">
+                                <button type="submit">Search</button>
+                            </div>
+                            <div style="margin-right: 1%">
+                                <a href="{% url 'app_contacts:contacts' %}" class="button">Reset</a>
+                            </div>
+                            <div>
+                                <a href="{% url 'app_contacts:add_contact' %}" class="button">Add contact</a>
+                            </div>
                         </div>
-                        <div style="margin-right: 1%">
-                            <a href="{% url 'app_contacts:contacts' %}" class="button">Reset</a>
-                        </div>
-                        <div>
-                            <a href="{% url 'app_contacts:add_contact' %}" class="button">Add contact</a>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
-        </div>
         </form>
-                <ul class="contact-icon">
-                    {% for contact in contacts %}
-                    <li class="">
-                        <a href="/app_contacts/contact_details/{{ contact.id }}/">{{ contact.name }} {{ contact.surname }}</a>
-                    </li>
-                    {% endfor %}
-                </ul>
-                <nav>
-                    <div style="display: flex; align-items: center;">
-                        <div>
-                        {% if contacts.has_previous %}
-                        <a href="?page={{ contacts.previous_page_number }}" class="button">Previous</a>
-                        {% endif %}
-                        </div>
-                        <div style="margin-right: 2%; margin-left: 2%">
-                            {% if contacts.has_previous %}
-                            <a href="{% url 'app_contacts:contacts' %}" class="button">Back</a>
-                            {% else %}
-                            <a href="{% url 'app_main:root' %}" class="button">Back to main page</a>
-                            {% endif %}
-                        </div>
-                        <div>
-                            {% if contacts.has_next %}
-                            <a href="?page={{ contacts.next_page_number }}" class="button">Next</a>
-                            {% endif %}
-                        </div>
-                    </div>
+        <ul class="contact-icon">
+            {% for contact in contacts %}
+            <li class="">
+                <a href="/app_contacts/contact_details/{{ contact.id }}/">{{ contact.name }} {{ contact.surname }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        <nav>
+            <div style="display: flex; align-items: center;">
+                <div>
+                    {% if contacts.has_previous %}
+                    <a href="?page={{ contacts.previous_page_number }}" class="button">Previous</a>
+                    {% endif %}
+                </div>
+                <div style="margin-right: 2%; margin-left: 2%">
+                    {% if contacts.has_previous %}
+                    <a href="{% url 'app_contacts:contacts' %}" class="button">Back</a>
+                    {% else %}
+                    <a href="{% url 'app_main:root' %}" class="button small">Back to main page</a>
+                    {% endif %}
+                </div>
+                <div>
+                    {% if contacts.has_next %}
+                    <a href="?page={{ contacts.next_page_number }}" class="button">Next</a>
+                    {% endif %}
+                </div>
+            </div>
 
-                </nav>
+        </nav>
+
     </div>
-</section >
+</section>
+
 {% endif %}
 {% endblock %}

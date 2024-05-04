@@ -3,10 +3,10 @@
 {% block contacts %}
 {% load static %}
 
-
 <section id="five" class="wrapper style1 fade-up">
     <div class="inner">
         <h2>Contact details:</h2>
+
         {% if messages %}
         <div class="messages">
             {% for message in messages %}
@@ -38,32 +38,35 @@
         <div>
             <a href="mailto:{{contact.email}}" target="_blank">
                 <img src="{% static 'app_main/images/email-ico.svg' %}" style="width: 20px; height: 20px;"/> </a>
-                {{contact.email}}
+            {{contact.email}}
         </div>
         {% endif %}
         {% if contact.mobile_phone %}
         <div>
-            <img src="{% static 'app_main/images/mobile-ico.svg' %}" style="width: 20px; height: 20px;"/> Mobile: {{contact.mobile_phone}}
+            <img src="{% static 'app_main/images/mobile-ico.svg' %}" style="width: 20px; height: 20px;"/> Mobile:
+            {{contact.mobile_phone}}
         </div>
         {% endif %}
         {% if contact.work_phone %}
         <div>
-            <img src="{% static 'app_main/images/phone-ico.svg' %}" style="width: 20px; height: 20px;"/> Work: {{contact.work_phone}}
+            <img src="{% static 'app_main/images/phone-ico.svg' %}" style="width: 20px; height: 20px;"/> Work:
+            {{contact.work_phone}}
         </div>
         {% endif %}
         {% if contact.home_phone %}
         <div>
-            <img src="{% static 'app_main/images/phone-ico.svg' %}" style="width: 20px; height: 20px;"/> Home: {{contact.home_phone}}
+            <img src="{% static 'app_main/images/phone-ico.svg' %}" style="width: 20px; height: 20px;"/> Home:
+            {{contact.home_phone}}
         </div>
         {% endif %}
         <div>
             {% if contact.facebook %}
             <a href="{{contact.facebook}}" target="_blank"><img src="{% static 'app_main/images/facebook-ico.svg' %}"
-                                                style="width: 20px; height: 20px;"/></a>
+                                                                style="width: 20px; height: 20px;"/></a>
             {% endif %}
             {% if contact.instagram %}
             <a href="{{contact.instagram}}" target="_blank"><img src="{% static 'app_main/images/instagram-ico.svg' %}"
-                                                 style="width: 20px; height: 20px;"/></a>
+                                                                 style="width: 20px; height: 20px;"/></a>
             {% endif %}
             {% if contact.tiktok %}
             <a href="{{contact.tiktok}}" target="_blank"><img
@@ -73,14 +76,27 @@
         </div>
         <div>
             {% if address.address or address.city or address.country %}
-                <a href="https://www.google.com/maps/search/{% if address.country %}{{address.country}}+{% endif %}{% if address.city %}{{address.city}}+{% endif %}{% if address.address %} {{address.address}}{% endif %}/" target="_blank">
+            <a href="https://www.google.com/maps/search/{% if address.country %}{{address.country}}+{% endif %}{% if address.city %}{{address.city}}+{% endif %}{% if address.address %} {{address.address}}{% endif %}/"
+               target="_blank">
                 <img src="{% static 'app_main/images/address-ico.svg' %}" style="width: 20px; height: 20px;"/></a>
-                    {% if address.address %} {{address.address}}, {% endif %}{% if address.city %}{{address.city}}, {% endif %}{% if address.country %}{{address.country}} {% endif %}
             {% endif %}
+
+            {% if address.address %}
+            {{address.address}}
+            {% endif %}
+
+            {% if address.city %}
+            {{address.city}}
+            {% endif %}
+
+            {% if address.country %}
+            {{address.country}}
+            {% endif %}
+            <p></p>
         </div>
-    </div>
-    <nav>
-    <div style="display: flex; align-items: center;">
+
+        <nav>
+            <div style="display: flex; align-items: center;">
                 <div clas="col-6 col-12-xsmall">
                     {% csrf_token %}
                     <a href="{% url 'app_contacts:contact_update' contact.id %}" class="button">
@@ -98,16 +114,9 @@
                         Back
                     </a>
                 </div>
+            </div>
+        </nav>
 
-    </div>
-    </nav>
-
-</section>
-<section id="bt" class="wrapper style1 fade-up">
-    <div class="inner">
-        <div class="split style1">
-
-        </div>
     </div>
 </section>
 
