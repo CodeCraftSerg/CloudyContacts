@@ -11,8 +11,7 @@
                 <i class="fa-solid fa-file-arrow-up" style="margin-right: 8px;"></i>Upload File
             </a>
         </div>
-    </div>
-    <div class="files-content" style="margin: 20px 30px; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 15px;">
+    <div class="files-content" style="margin: 60px; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 15px;">
         <button onclick="location.href='{% url 'app_files:image_files' %}'" class="button">
             <i class="fa-solid fa-file-image" style="font-size:36px; color: #8224e3;"></i> Images
         </button>
@@ -31,6 +30,7 @@
         <button onclick="location.href='{% url 'app_files:other_files' %}'" class="button">
             <i class="fa-solid fa-file" style="font-size:36px; color: #8224e3;"></i> Others
         </button>
+    </div>
     </div>
 </section>
 <style>
