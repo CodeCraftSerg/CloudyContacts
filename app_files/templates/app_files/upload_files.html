@@ -6,6 +6,10 @@
 <section class="wrapper style1 fade-up">
     <div class="inner">
         <h2>Upload File</h2>
+
+        <a href="/app_files" class="button small">to the files page</a>
+        <p></p>
+
         <form action="{% url 'app_files:upload_files' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="fields">
@@ -19,9 +23,11 @@
                 </div>
             </div>
             <ul class="actions">
-                <li><button type="submit" class="button">Upload</button></li>
+                <li>
+                    <button type="submit" class="button">Upload</button>
+                </li>
             </ul>
-        </form>
     </div>
 </section>
+
 {% endblock %}

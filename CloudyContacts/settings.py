@@ -30,8 +30,8 @@ environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = env("DEBUG")
-DEBUG = False
+DEBUG = env("DEBUG")
+# DEBUG = False
 
 ALLOWED_HOSTS = [
     "DJANGO_ALLOWED_HOSTS",
@@ -110,16 +110,16 @@ WSGI_APPLICATION = "CloudyContacts.wsgi.application"
 # }
 
 # --- PostgreSQL Database ---
-# DATABASES = {
-#     "default": {
-#         "ENGINE": env("DB_ENGINE"),
-#         "NAME": env("DB_NAME"),
-#         "USER": env("DB_USER"),
-#         "PASSWORD": env("DB_PASSWORD"),
-#         "HOST": env("DB_HOST"),
-#         "PORT": env("DB_PORT"),
-#     }
-# }
+DATABASES = {
+    "default": {
+        "ENGINE": env("DB_ENGINE"),
+        "NAME": env("DB_NAME"),
+        "USER": env("DB_USER"),
+        "PASSWORD": env("DB_PASSWORD"),
+        "HOST": env("DB_HOST"),
+        "PORT": env("DB_PORT"),
+    }
+}
 
 # --- koyeb Database ---
 # DATABASES = {
@@ -133,16 +133,16 @@ WSGI_APPLICATION = "CloudyContacts.wsgi.application"
 # }
 
 # --- ElephantSQL Database ---
-DATABASES = {
-    "default": {
-        "ENGINE": env("ELEPHANT_ENGINE"),
-        "NAME": env("ELEPHANT_DB_NAME_USER"),
-        "USER": env("ELEPHANT_DB_NAME_USER"),
-        "PASSWORD": env("ELEPHANT_PASSWORD"),
-        "HOST": env("ELEPHANT_HOST"),
-        "PORT": env("ELEPHANT_PORT"),
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": env("ELEPHANT_ENGINE"),
+#         "NAME": env("ELEPHANT_DB_NAME_USER"),
+#         "USER": env("ELEPHANT_DB_NAME_USER"),
+#         "PASSWORD": env("ELEPHANT_PASSWORD"),
+#         "HOST": env("ELEPHANT_HOST"),
+#         "PORT": env("ELEPHANT_PORT"),
+#     }
+# }
 
 
 # Password validation
@@ -206,9 +206,9 @@ DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
 
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': env('CLOUDINARY_NAME'),
-    'API_KEY': env('CLOUDINARY_API_KEY'),
-    'API_SECRET': env('CLOUDINARY_API_SECRET'),
+    "CLOUD_NAME": env("CLOUDINARY_NAME"),
+    "API_KEY": env("CLOUDINARY_API_KEY"),
+    "API_SECRET": env("CLOUDINARY_API_SECRET"),
 }
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.RawMediaCloudinaryStorage"
