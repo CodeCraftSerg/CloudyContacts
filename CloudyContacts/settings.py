@@ -37,6 +37,7 @@ DEBUG = env("DEBUG")
 ALLOWED_HOSTS = [
     "DJANGO_ALLOWED_HOSTS",
     "0.0.0.0",
+    "web-pzjikg8utavf.up-de-fra1-k8s-1.apps.run-on-seenode.com",
 ]
 # ALLOWED_HOSTS = os.getenv(
 #     "DJANGO_ALLOWED_HOSTS",
