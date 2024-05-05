@@ -30,17 +30,19 @@ environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = env("DEBUG")
+DEBUG = env("DEBUG")
 # DEBUG = False
-DEBUG = True
+# DEBUG = True
 
-# ALLOWED_HOSTS = [
+ALLOWED_HOSTS = [
+    "DJANGO_ALLOWED_HOSTS",
+    "0.0.0.0",
+]
+# ALLOWED_HOSTS = os.getenv(
 #     "DJANGO_ALLOWED_HOSTS",
-#     "127.0.0.1",
-# ]
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1,[::1]").split(
-    ","
-)
+#     "localhost,127.0.0.1,[::1]",
+#     "cloudy-contacts-grey-40c607a6.koyeb.app",
+# ).split(",")
 
 # CSRF_TRUSTED_ORIGINS = [""]
 # CSRF_TRUSTED_ORIGINS = os.getenv(
