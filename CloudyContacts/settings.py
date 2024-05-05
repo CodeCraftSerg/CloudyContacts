@@ -45,7 +45,7 @@ ALLOWED_HOSTS = [
 #     "cloudy-contacts-grey-40c607a6.koyeb.app",
 # ).split(",")
 
-# CSRF_TRUSTED_ORIGINS = [""]
+CSRF_TRUSTED_ORIGINS = ["web-pzjikg8utavf.up-de-fra1-k8s-1.apps.run-on-seenode.com"]
 # CSRF_TRUSTED_ORIGINS = os.getenv(
 #     ""
 # ).split(",")
