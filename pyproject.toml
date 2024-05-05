@@ -15,6 +15,7 @@ environ = "^1.0"
 gunicorn = "^22.0.0"
 whitenoise = "^6.6.0"
 requests = "^2.31.0"
+beautifulsoup4 = "^4.12.3"
 cloudinary = "^1.40.0"
 django-cloudinary-storage = "^0.3.0"
 

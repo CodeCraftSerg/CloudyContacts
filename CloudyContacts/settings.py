@@ -30,13 +30,24 @@ environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env("DEBUG")
+# DEBUG = env("DEBUG")
+DEBUG = False
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1,[::1]").split(
-    ","
-)
+ALLOWED_HOSTS = [
+    "DJANGO_ALLOWED_HOSTS",
+    "127.0.0.1",
+    "cloudy-contacts-grey-50db466b.koyeb.app",
+]
+# ALLOWED_HOSTS = os.getenv(
+#     "DJANGO_ALLOWED_HOSTS",
+#     "localhost,127.0.0.1,[::1]",
+#     "https://cloudy-contacts-grey-1bd53251.koyeb.app/",
+# ).split(",")
 
+CSRF_TRUSTED_ORIGINS = ["https://cloudy-contacts-grey-50db466b.koyeb.app"]
+# CSRF_TRUSTED_ORIGINS = os.getenv(
+#     "https://cloudy-contacts-grey-1bd53251.koyeb.app/"
+# ).split(",")
 
 # Application definition
 
@@ -111,27 +122,27 @@ WSGI_APPLICATION = "CloudyContacts.wsgi.application"
 # }
 
 # --- koyeb Database ---
-DATABASES = {
-    "default": {
-        "ENGINE": env("KOYEB_ENGINE"),
-        "NAME": env("KOYEB_NAME"),
-        "USER": env("KOYEB_USER"),
-        "PASSWORD": env("KOYEB_PASSWORD"),
-        "HOST": env("KOYEB_HOST"),
-    }
-}
-
-# --- ElephantSQL Database ---
 # DATABASES = {
 #     "default": {
-#         "ENGINE": env("ELEPHANT_ENGINE"),
-#         "NAME": env("ELEPHANT_DB_NAME_USER"),
-#         "USER": env("ELEPHANT_DB_NAME_USER"),
-#         "PASSWORD": env("ELEPHANT_PASSWORD"),
-#         "HOST": env("ELEPHANT_HOST"),
-#         "PORT": env("ELEPHANT_PORT"),
+#         "ENGINE": env("KOYEB_ENGINE"),
+#         "NAME": env("KOYEB_NAME"),
+#         "USER": env("KOYEB_USER"),
+#         "PASSWORD": env("KOYEB_PASSWORD"),
+#         "HOST": env("KOYEB_HOST"),
 #     }
 # }
+
+# --- ElephantSQL Database ---
+DATABASES = {
+    "default": {
+        "ENGINE": env("ELEPHANT_ENGINE"),
+        "NAME": env("ELEPHANT_DB_NAME_USER"),
+        "USER": env("ELEPHANT_DB_NAME_USER"),
+        "PASSWORD": env("ELEPHANT_PASSWORD"),
+        "HOST": env("ELEPHANT_HOST"),
+        "PORT": env("ELEPHANT_PORT"),
+    }
+}
 
 
 # Password validation
@@ -175,7 +186,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 LOGIN_URL = "/users/signin"
 LOGIN_REDIRECT_URL = "/"
 
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
 
 # Default primary key field type

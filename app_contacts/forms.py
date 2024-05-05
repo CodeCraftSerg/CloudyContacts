@@ -1,7 +1,6 @@
-from django import forms
+
 from django.core.validators import RegexValidator
-from django.forms import ModelForm, CharField, TextInput, DateInput, Textarea, ModelChoiceField, Select, SelectMultiple, \
-    MultipleChoiceField, BooleanField, CheckboxInput, DateField
+from django.forms import ModelForm, CharField, TextInput, DateInput, BooleanField, CheckboxInput, DateField
 
 from app_contacts.models import Contact, Address
 

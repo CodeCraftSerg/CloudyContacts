@@ -14,17 +14,17 @@ app_name = "users"
 
 urlpatterns = [
     path(
-        "signup",
+        "signup/",
         views.RegisterView.as_view(),
         name="signup",
     ),
     path(
-        "signin",
+        "signin/",
         LoginView.as_view(template_name="users/signin.html", form_class=LoginForm),
         name="signin",
     ),
     path(
-        "signout",
+        "signout/",
         LogoutView.as_view(template_name="users/signout.html"),
         name="signout",
     ),
