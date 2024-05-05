@@ -31,7 +31,7 @@ def main(request):
     else:
         city = "Kyiv"
 
-    city = "Kyiv"
+    # city = "Kyiv"
 
     city_weather = requests.get(url_1.format(city)).json()
 
