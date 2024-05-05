@@ -32,21 +32,19 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 # DEBUG = False
+# DEBUG = True
 
-ALLOWED_HOSTS = [
-    "DJANGO_ALLOWED_HOSTS",
-    "127.0.0.1",
-    "cloudy-contacts-grey-50db466b.koyeb.app",
-]
-# ALLOWED_HOSTS = os.getenv(
+# ALLOWED_HOSTS = [
 #     "DJANGO_ALLOWED_HOSTS",
-#     "localhost,127.0.0.1,[::1]",
-#     "https://cloudy-contacts-grey-1bd53251.koyeb.app/",
-# ).split(",")
+#     "127.0.0.1",
+# ]
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1,[::1]").split(
+    ","
+)
 
-CSRF_TRUSTED_ORIGINS = ["https://cloudy-contacts-grey-50db466b.koyeb.app"]
+# CSRF_TRUSTED_ORIGINS = [""]
 # CSRF_TRUSTED_ORIGINS = os.getenv(
-#     "https://cloudy-contacts-grey-1bd53251.koyeb.app/"
+#     ""
 # ).split(",")
 
 # Application definition
@@ -110,16 +108,16 @@ WSGI_APPLICATION = "CloudyContacts.wsgi.application"
 # }
 
 # --- PostgreSQL Database ---
-DATABASES = {
-    "default": {
-        "ENGINE": env("DB_ENGINE"),
-        "NAME": env("DB_NAME"),
-        "USER": env("DB_USER"),
-        "PASSWORD": env("DB_PASSWORD"),
-        "HOST": env("DB_HOST"),
-        "PORT": env("DB_PORT"),
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": env("DB_ENGINE"),
+#         "NAME": env("DB_NAME"),
+#         "USER": env("DB_USER"),
+#         "PASSWORD": env("DB_PASSWORD"),
+#         "HOST": env("DB_HOST"),
+#         "PORT": env("DB_PORT"),
+#     }
+# }
 
 # --- koyeb Database ---
 # DATABASES = {
@@ -133,16 +131,16 @@ DATABASES = {
 # }
 
 # --- ElephantSQL Database ---
-# DATABASES = {
-#     "default": {
-#         "ENGINE": env("ELEPHANT_ENGINE"),
-#         "NAME": env("ELEPHANT_DB_NAME_USER"),
-#         "USER": env("ELEPHANT_DB_NAME_USER"),
-#         "PASSWORD": env("ELEPHANT_PASSWORD"),
-#         "HOST": env("ELEPHANT_HOST"),
-#         "PORT": env("ELEPHANT_PORT"),
-#     }
-# }
+DATABASES = {
+    "default": {
+        "ENGINE": env("ELEPHANT_ENGINE"),
+        "NAME": env("ELEPHANT_DB_NAME_USER"),
+        "USER": env("ELEPHANT_DB_NAME_USER"),
+        "PASSWORD": env("ELEPHANT_PASSWORD"),
+        "HOST": env("ELEPHANT_HOST"),
+        "PORT": env("ELEPHANT_PORT"),
+    }
+}
 
 
 # Password validation
