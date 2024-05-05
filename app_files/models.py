@@ -78,7 +78,7 @@ class UserFile(models.Model):
     filename (CharField): The name of the file.
     file_type (CharField): The type of file, determined automatically by the system.
     """
-    filepath = models.FileField(upload_to=update_filename)
+    filepath = models.FileField()
     file_description = models.CharField(max_length=255, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, related_name='files', on_delete=models.CASCADE, null=True)
