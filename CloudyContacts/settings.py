@@ -39,6 +39,8 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "0.0.0.0",
     "web-pzjikg8utavf.up-de-fra1-k8s-1.apps.run-on-seenode.com",
+    "api.openweathermap.org",
+    "ipgeolocation.abstractapi.com",
 ]
 # ALLOWED_HOSTS = os.getenv(
 #     "DJANGO_ALLOWED_HOSTS",
