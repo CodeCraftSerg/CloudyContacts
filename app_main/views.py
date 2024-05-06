@@ -18,20 +18,27 @@ def main(request):
         + API_WEATHER_KEY
     )
 
-    public_ip = requests.get("https://api.ipify.org").text
-    # print(f"Public IP Address: {public_ip}")
-
-    response_ip = requests.get(
-        "https://ipgeolocation.abstractapi.com/v1/?api_key="
-        + ABSTRACT_API_KEY
-        + "&ip_address="
-        + public_ip
-    )
-    # print(response_ip.status_code)
-    # print(response_ip.content)
+    response_ip = requests.get("https://api.ipify.org?format=json")
     if response_ip.status_code == 200:
-        data = response_ip.json()
-        city = data["city"]
+        public_ip = response_ip.json()["ip"]
+    else:
+        public_ip = None
+    # print(public_ip)
+
+    if public_ip:
+        response_city = requests.get(
+            "https://ipgeolocation.abstractapi.com/v1/?api_key="
+            + ABSTRACT_API_KEY
+            + "&ip_address="
+            + public_ip
+        )
+        # print(response_ip.status_code)
+        # print(response_ip.content)
+        if response_city.status_code == 200:
+            data = response_city.json()
+            city = data["city"]
+        else:
+            city = "Kyiv"
     else:
         city = "Kyiv"
 
