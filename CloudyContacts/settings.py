@@ -39,6 +39,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "0.0.0.0",
     "web-pzjikg8utavf.up-de-fra1-k8s-1.apps.run-on-seenode.com",
+    "cloudy-contacts-grey-edede0fc.koyeb.app",
     "api.openweathermap.org",
     "ipgeolocation.abstractapi.com",
 ]
@@ -49,7 +50,8 @@ ALLOWED_HOSTS = [
 # ).split(",")
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://web-pzjikg8utavf.up-de-fra1-k8s-1.apps.run-on-seenode.com"
+    "https://web-pzjikg8utavf.up-de-fra1-k8s-1.apps.run-on-seenode.com",
+    "https://cloudy-contacts-grey-edede0fc.koyeb.app/",
 ]
 # CSRF_TRUSTED_ORIGINS = os.getenv(
 #     ""
