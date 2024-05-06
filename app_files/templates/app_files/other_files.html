@@ -30,7 +30,7 @@
                 {% for f in other_list %}
                 <tr>
                     <td>{{ f.description }}</td>
-                    <td><a href="{{ f.filepath.url }}">{{ f.filename }}</a></td>
+                    <td style="vertical-align: middle; text-align: center;"><a href="{{ f.filepath.url }} " class="button">download</a></td>
                     <td><a href="{% url 'app_files:edit_description' f.id %}" class="button">Edit</a></td>
                     <td><a href="{% url 'app_files:delete_file' f.id %}" class="button">Delete</a></td>
                 </tr>
