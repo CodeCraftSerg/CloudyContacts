@@ -13,6 +13,7 @@ env = environ.Env(
 def main(request):
     API_WEATHER_KEY = env("API_WEATHER_KEY")
     ABSTRACT_API_KEY = env("ABSTRACT_API_KEY")
+
     url_1 = (
         "https://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid="
         + API_WEATHER_KEY
@@ -38,9 +39,9 @@ def main(request):
             data = response_city.json()
             city = data["city"]
         else:
-            city = "Kyiv"
+            city = "Poltava"
     else:
-        city = "Kyiv"
+        city = "Poltava"
 
     # city = "Kyiv"
 
