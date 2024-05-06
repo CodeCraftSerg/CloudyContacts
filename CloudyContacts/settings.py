@@ -42,6 +42,7 @@ ALLOWED_HOSTS = [
     "cloudy-contacts-grey-edede0fc.koyeb.app",
     "api.openweathermap.org",
     "ipgeolocation.abstractapi.com",
+    "suspilne.media",
 ]
 # ALLOWED_HOSTS = os.getenv(
 #     "DJANGO_ALLOWED_HOSTS",
