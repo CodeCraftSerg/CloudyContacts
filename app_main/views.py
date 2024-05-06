@@ -18,11 +18,8 @@ def main(request):
         + API_WEATHER_KEY
     )
 
-    try:
-        public_ip = requests.get("https://api.ipify.org").text
-        # print(f"Public IP Address: {public_ip}")
-    except requests.RequestException as e:
-        print(f"Error retrieving public IP address: {e}")
+    public_ip = requests.get("https://api.ipify.org").text
+    # print(f"Public IP Address: {public_ip}")
 
     response_ip = requests.get(
         "https://ipgeolocation.abstractapi.com/v1/?api_key="
