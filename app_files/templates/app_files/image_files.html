@@ -21,6 +21,7 @@
             <table class="alt">
                 <thead>
                 <tr>
+                    <th>Preview</th>
                     <th>Description</th>
                     <th>Download Link</th>
                     <th>Edit</th>
@@ -30,11 +31,12 @@
                 <tbody>
                 {% for f in image_list %}
                 <tr>
-                    <td>{{ f.file_description }}</td>
-                    <td><a href="{{ f.filepath.url }}">{{ f.filename }}</a></td>
-                    <td><a href="{% url 'app_files:edit_description' f.id %}" class="button">Edit</a></td>
-                    <td><a href="{% url 'app_files:delete_file' f.id %}" class="button">Delete</a></td>
-                </tr>
+                        <td style="width: 15%; text-align: center; vertical-align: middle;"><img style="max-width: 100%; max-height: 100%;display: inline-block;" src="{{ f.filepath.url }} "/></td>
+                        <td style="vertical-align: middle; ">{{ f.file_description }}</td>
+                        <td style="vertical-align: middle; text-align: center;"><a href="{{ f.filepath.url }}">download</a></td>
+                        <td style="vertical-align: middle; text-align: center;"><a href="{% url 'app_files:edit_description' f.id %}" class="button">Edit</a></td>
+                        <td style="vertical-align: middle; text-align: center;"><a href="{% url 'app_files:delete_file' f.id %}" class="button">Delete</a></td>
+                    </tr>
                 {% empty %}
                 <tr>
                     <td colspan="4">No images available.</td>
