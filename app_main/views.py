@@ -10,6 +10,15 @@ env = environ.Env(
 )
 
 
+def get_client_ip(request):
+    x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(",")[0]
+    else:
+        ip = request.META.get("REMOTE_ADDR")
+    return ip
+
+
 def main(request):
     API_WEATHER_KEY = env("API_WEATHER_KEY")
     ABSTRACT_API_KEY = env("ABSTRACT_API_KEY")
@@ -18,11 +27,7 @@ def main(request):
         + API_WEATHER_KEY
     )
 
-    response_ip = requests.get("https://api.ipify.org?format=json")
-    if response_ip.status_code == 200:
-        public_ip = response_ip.json()["ip"]
-    else:
-        public_ip = None
+    public_ip = get_client_ip(request)
     # print(public_ip)
 
     if public_ip:
@@ -36,11 +41,15 @@ def main(request):
         # print(response_ip.content)
         if response_city.status_code == 200:
             data = response_city.json()
-            city = data["city"]
+            city_temp = data["city"]
+            if city_temp:
+                city = city_temp
+            else:
+                city = "Kharkiv"
         else:
-            city = "Kyiv"
+            city = "Kharkiv"
     else:
-        city = "Kyiv"
+        city = "Kharkiv"
 
     # city = "Kyiv"
 
