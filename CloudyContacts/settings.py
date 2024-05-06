@@ -45,6 +45,7 @@ ALLOWED_HOSTS = [
     "suspilne.media/sport",
     "suspilne.media",
     "suspilne.media/culture",
+    "api.ipify.org",
 ]
 # ALLOWED_HOSTS = os.getenv(
 #     "DJANGO_ALLOWED_HOSTS",
