@@ -37,11 +37,15 @@ def main(request):
         # print(response_ip.content)
         if response_city.status_code == 200:
             data = response_city.json()
-            city = data["city"]
+            city_temp = data["city"]
+            if city_temp:
+                city = city_temp
+            else:
+                city = "Kyiv"
         else:
-            city = "Poltava"
+            city = "Kyiv"
     else:
-        city = "Poltava"
+        city = "Kyiv"
 
     # city = "Kyiv"
 
