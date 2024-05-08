@@ -14,18 +14,24 @@ def main(request):
 
 @login_required
 def sport_news(request):
-    # Initialize an empty list to store sport news
+    """
+    The sport_news function scrapes the Suspilne.Media website for sport news,
+        and returns a list of dictionaries containing the following information:
+        - time (datetime)
+        - url (str)
+        - news (str)
+    
+    :param request: Get the request object
+    :return: The sport_news
+    :doc-author: Trelent
+    """
     sport_news = []
-
-    # URL of the website to scrape news from
     base_url = "https://suspilne.media/sport/"
 
-    # Get response from the server
     try:
         response = requests.get(base_url)
-        response.raise_for_status()  # Raise an exception for HTTP errors
+        response.raise_for_status()
     except requests.exceptions.RequestException as e:
-        # Return an error message if there's a problem with getting the response
         return render(
             request,
             "app_news/error.html",
@@ -34,7 +40,6 @@ def sport_news(request):
 
     soup = BeautifulSoup(response.text, "html.parser")
 
-    # Find the main news container
     news_containers = soup.find_all(
         "div",
         class_=[
@@ -44,7 +49,6 @@ def sport_news(request):
         ],
     )
 
-    # Get sport news items from each container
     for container in news_containers:
         result = {}
         time_tag = container.find("time")
@@ -61,26 +65,18 @@ def sport_news(request):
             new_datetime_str = original_datetime.strftime("%Y-%m-%d %H:%M")
 
             result["time"] = new_datetime_str
-
-            # print(result["time"])
-            # print(type(result["time"]))
-            result["sport"] = (
-                "Sport"  # Since this website is specifically for sport news
-            )
+            result["sport"] = ("Sport")
             result["url"] = url_tag.get("href", "")
             result["news"] = title_tag.text.strip()
 
             sport_news.append(result)
 
-    # Check if any sport news found
     if not sport_news:
-        # Return an error message if no sport news found
         return render(
             request, "app_news/error.html", {"message": "No sport news found."}
         )
 
-    # Paginate the news
-    paginator = Paginator(sport_news, 5)  # Show 5 news per page
+    paginator = Paginator(sport_news, 5)
     page_number = request.GET.get("page")
     try:
         sport_news_page = paginator.page(page_number)
@@ -89,29 +85,31 @@ def sport_news(request):
     except EmptyPage:
         sport_news_page = paginator.page(paginator.num_pages)
 
-    # Render the sport_news template with paginated sport news data
     return render(request, "app_news/sport_news.html", {"sport_news": sport_news_page})
 
 
 @login_required
 def politic_news(request):
-    # Initialize an empty list to store politic news
+    """
+    The politic_news function scrapes the Suspilne.Media website for political news and 
+    returns a list of dictionaries containing the title, url, and time of each article.
+    
+    :param request: Get the request object that is sent from the user to your server
+    :return: A render function
+    :doc-author: Trelent
+    """
     politic_news = []
-    # URL of the website to scrape news from
     base_url = "https://suspilne.media/"
-    # Get response from the server
     try:
         response = requests.get(base_url)
-        response.raise_for_status()  # Raise an exception for HTTP errors
+        response.raise_for_status()
     except requests.exceptions.RequestException as e:
-        # Return an error message if there's a problem with getting the response
         return render(
             request,
             "app_news/error.html",
             {"message": "Could not get response from server."},
         )
     soup = BeautifulSoup(response.text, "html.parser")
-    # Find the main news container
     news_containers = soup.find_all(
         "div",
         class_=[
@@ -120,7 +118,7 @@ def politic_news(request):
             "c-article-card--big-headline",
         ],
     )
-    # Get news items from each container
+    
     for container in news_containers:
         result = {}
         try:
@@ -139,17 +137,13 @@ def politic_news(request):
                 "href"
             ]
         except AttributeError as e:
-            # Skip if any attribute error occurs
             continue
         politic_news.append(result)
-    # Check if any news found
     if not politic_news:
-        # Return an error message if no news found
         return render(
             request, "app_news/error.html", {"message": "No political news available."}
         )
-    # Paginate the news
-    paginator = Paginator(politic_news, 5)  # Show 5 news per page
+    paginator = Paginator(politic_news, 5)
     page_number = request.GET.get("page")
     try:
         politic_news_page = paginator.page(page_number)
@@ -157,24 +151,27 @@ def politic_news(request):
         politic_news_page = paginator.page(1)
     except EmptyPage:
         politic_news_page = paginator.page(paginator.num_pages)
-    # Render the politic_news template with paginated news data
+        
     return render(request, "app_news/politic_news.html", {"news": politic_news_page})
 
 
 @login_required
 def culture_news(request):
-    # Initialize an empty list to store culture news
+    """
+    The culture_news function scrapes the Suspilne.Media website for culture news,
+        and then renders a template with the results.
+    
+    :param request: Get the request object
+    :return: A render function, not a dictionary
+    :doc-author: Trelent
+    """
     culture_news = []
-
-    # URL of the website to scrape news from
     base_url = "https://suspilne.media/culture/"
 
-    # Get response from the server
     try:
         response = requests.get(base_url)
-        response.raise_for_status()  # Raise an exception for HTTP errors
+        response.raise_for_status()
     except requests.exceptions.RequestException as e:
-        # Return an error message if there's a problem with getting the response
         return render(
             request,
             "app_news/error.html",
@@ -183,10 +180,8 @@ def culture_news(request):
 
     soup = BeautifulSoup(response.text, "html.parser")
 
-    # Find the main news container
     news_containers = soup.find_all("div", class_=["c-article-card__content"])
 
-    # Get culture news items from each container
     for container in news_containers:
         result = {}
         time_tag = container.find("time")
@@ -203,23 +198,18 @@ def culture_news(request):
             new_datetime_str = original_datetime.strftime("%Y-%m-%d %H:%M")
 
             result["time"] = new_datetime_str
-            result["culture"] = (
-                "Culture"  # Since this website is specifically for culture news
-            )
+            result["culture"] = ("Culture")
             result["url"] = url_tag.get("href", "")
             result["news"] = title_tag.text.strip()
 
             culture_news.append(result)
 
-    # Check if any culture news found
     if not culture_news:
-        # Return an error message if no culture news found
         return render(
             request, "app_news/error.html", {"message": "No culture news found."}
         )
 
-    # Paginate the news
-    paginator = Paginator(culture_news, 5)  # Show 5 news per page
+    paginator = Paginator(culture_news, 5)
     page_number = request.GET.get("page")
     try:
         culture_news_page = paginator.page(page_number)
@@ -228,7 +218,4 @@ def culture_news(request):
     except EmptyPage:
         culture_news_page = paginator.page(paginator.num_pages)
 
-    # Render the culture_news template with paginated culture news data
-    return render(
-        request, "app_news/culture_news.html", {"culture_news": culture_news_page}
-    )
+    return render(request, "app_news/culture_news.html", {"culture_news": culture_news_page})
