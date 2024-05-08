@@ -37,6 +37,7 @@ DEBUG = env("DEBUG")
 ALLOWED_HOSTS = [
     "DJANGO_ALLOWED_HOSTS",
     "127.0.0.1",
+    "localhost",
     "0.0.0.0",
     "web-pzjikg8utavf.up-de-fra1-k8s-1.apps.run-on-seenode.com",
     "cloudy-contacts-grey-edede0fc.koyeb.app",
@@ -50,7 +51,7 @@ ALLOWED_HOSTS = [
 # ALLOWED_HOSTS = os.getenv(
 #     "DJANGO_ALLOWED_HOSTS",
 #     "localhost,127.0.0.1,[::1]",
-#     "cloudy-contacts-grey-40c607a6.koyeb.app",
+#     "cloudy-contacts-grey-edede0fc.koyeb.app",
 # ).split(",")
 
 CSRF_TRUSTED_ORIGINS = [
