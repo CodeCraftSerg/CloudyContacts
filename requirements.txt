@@ -9,7 +9,6 @@ channels==4.1.0
 charset-normalizer==3.3.2
 click==8.1.7
 cloudinary==1.40.0
--e git+https://github.com/CodeCraftSerg/CloudyContacts.git@930e1eb344af96776383effc6f4181f6b84d2e1d#egg=cloudycontacts
 colorama==0.4.6
 constantly==23.10.4
 cryptography==42.0.5
