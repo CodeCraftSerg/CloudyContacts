@@ -29,7 +29,7 @@
                     <h2>{{ period|capfirst }} Birthdays</h2>
                     <ul class="birthday-icon">
                         {% for contact in birthday_contacts %}
-                            <li><a href="/app_contacts/contact_details/{{ contact.id }}/">{{ contact.name }} - {{ contact.birthdate|date:"l, M d" }}</a></li>
+                            <li><a href="/app_contacts/contact_details/{{ contact.id }}/">{{ contact.name }} - {{ contact.birthdate|date:"M d" }}</a></li>
                         {% endfor %}
                     </ul>
                     {% else %}
@@ -46,7 +46,7 @@
                 {% if not passed_this_year %}<div style="font-size: 14pt">No birthdays to show.</div>{% endif %}
                 <ul class="birthday-icon">
                     {% for contact in passed_this_year %}
-                        <li><a href="/app_contacts/contact_details/{{ contact.id }}/">{{ contact.name }} - {{ contact.birthdate|date:"l, M d" }}</a></li>
+                        <li><a href="/app_contacts/contact_details/{{ contact.id }}/">{{ contact.name }} - {{ contact.birthdate|date:"M d" }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -55,7 +55,7 @@
                 {% if not today_birthdays %}<div style="font-size: 14pt">No birthdays to show.</div>{% endif %}
                 <ul class="birthday-icon">
                     {% for contact in today_birthdays %}
-                        <li><a href="/app_contacts/contact_details/{{ contact.id }}/">{{ contact.name }} - {{ contact.birthdate|date:"l, M d" }}</a></li>
+                        <li><a href="/app_contacts/contact_details/{{ contact.id }}/">{{ contact.name }} - {{ contact.birthdate|date:"M d" }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -64,7 +64,7 @@
                 {% if not upcoming_this_month %}<div style="font-size: 14pt">No birthdays to show.</div>{% endif %}
                 <ul class="birthday-icon">
                     {% for contact in upcoming_this_month %}
-                        <li><a href="/app_contacts/contact_details/{{ contact.id }}/">{{ contact.name }} - {{ contact.birthdate|date:"l, M d" }}</a></li>
+                        <li><a href="/app_contacts/contact_details/{{ contact.id }}/">{{ contact.name }} - {{ contact.birthdate|date:"M d" }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
