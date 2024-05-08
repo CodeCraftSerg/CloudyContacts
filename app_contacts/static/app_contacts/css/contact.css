@@ -19,4 +19,14 @@
 .birthday-icon li {
     padding-left: 5px;
 }
+.birthday-icon-pass {
+    list-style-image: url('../images/birthday-ico-pass-small.svg');
+}
+.birthday-icon img {
+    width: 20px;
+    height: 20px;
+}
+.birthday-icon li {
+    padding-left: 5px;
+}
 

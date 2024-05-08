@@ -76,7 +76,10 @@
         </div>
         <div>
             {% if address.address or address.city or address.country %}
-            <a href="https://www.google.com/maps/search/{% if address.country %}{{address.country}}+{% endif %}{% if address.city %}{{address.city}}+{% endif %}{% if address.address %} {{address.address}}{% endif %}/"
+            <a href="https://www.google.com/maps/search/
+            {% if address.country %}{{address.country}}+{% endif %}
+            {% if address.city %}{{address.city}}+{% endif %}
+            {% if address.address %} {{address.address}}{% endif %}/"
                target="_blank">
                 <img src="{% static 'app_main/images/address-ico.svg' %}" style="width: 20px; height: 20px;"/></a>
             {% endif %}

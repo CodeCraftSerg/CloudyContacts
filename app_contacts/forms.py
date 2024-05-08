@@ -14,17 +14,20 @@ class ContactForm(ModelForm):
                       widget=TextInput(attrs={'placeholder': 'Email'}))
     mobile_phone = CharField(required=False, validators=[RegexValidator(
         regex=r'\+?\d{1,3}\(?\d{2,4}\)?\d{3}(?:-?\d{3,4})(\d{3})?',
-        message='Phone number must be entered in the format: +CountryCode(operator code)phone number example: +380(50)1234567. Up to 15 digits allowed.'
+        message='Phone number must be entered in the format: '
+                '+CountryCode(operator code)phone number example: +380(50)1234567. Up to 15 digits allowed.'
     )],
                              widget=TextInput(attrs={'placeholder': 'Mobile phone', "class": "form-control"}))
     work_phone = CharField(required=False, validators=[RegexValidator(
         regex=r'\+?\d{1,3}\(?\d{2,4}\)?\d{3}(?:-?\d{3,4})(\d{3})?',
-        message='Phone number must be entered in the format: +CountryCode(operator code)phone number example: +380(50)1234567. Up to 15 digits allowed.'
+        message='Phone number must be entered in the format: '
+                '+CountryCode(operator code)phone number example: +380(50)1234567. Up to 15 digits allowed.'
     )],
                            widget=TextInput(attrs={'placeholder': 'Work phone', "class": "form-control"}))
     home_phone = CharField(required=False, validators=[RegexValidator(
         regex=r'\+?\d{1,3}\(?\d{2,4}\)?\d{3}(?:-?\d{3,4})(\d{3})?',
-        message='Phone number must be entered in the format: +CountryCode(operator code)phone number example: +380(50)1234567. Up to 15 digits allowed.'
+        message='Phone number must be entered in the format: '
+                '+CountryCode(operator code)phone number example: +380(50)1234567. Up to 15 digits allowed.'
     )],
                            widget=TextInput(attrs={'placeholder': 'Home phone', "class": "form-control"}))
     birthdate = DateField(required=False, input_formats=['%d/%m/%Y'], widget=DateInput(format='%d/%m/%Y'))

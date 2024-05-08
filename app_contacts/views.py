@@ -1,16 +1,12 @@
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.template.backends import django
-from django.urls import reverse
 from django.db.models import Q
-
 
 from datetime import datetime, timedelta
 from calendar import monthcalendar
-from dateutil.relativedelta import relativedelta
 
 from app_contacts.forms import ContactForm, AddressForm
 from app_contacts.models import Contact, Address
@@ -19,11 +15,11 @@ from app_contacts.models import Contact, Address
 @login_required
 def main(request, page=1):
     contacts = (
-        Contact.objects.filter(user=request.user).all().order_by("name")
+        Contact.objects.filter(user=request.user).all().order_by("name") # noqa
         if request.user.is_authenticated
         else []
     )
-    total_contacts = contacts.count()
+    total_contacts = contacts.count() # noqa
     if not contacts:
         error_message = "You have no contacts"
     else:
@@ -31,9 +27,9 @@ def main(request, page=1):
     query = request.GET.get("q")
 
     if query:
-        contacts = Contact.objects.filter(
+        contacts = Contact.objects.filter( # noqa
             Q(
-                address__in=Address.objects.filter(
+                address__in=Address.objects.filter( # noqa
                     Q(country__icontains=query.strip())
                     | Q(city__icontains=query.strip())
                     | Q(address__icontains=query.strip())
@@ -124,13 +120,14 @@ def delete_contact(request, contact_id):
         a.delete()
         messages.success(request, f"Contact '{a.name} {a.surname}' deleted")
         return redirect(to="app_contacts:contacts")
-    except Contact.DoesNotExist:
+    except Contact.DoesNotExist: # noqa
         raise Http404("Contact not found")
 
 
 @login_required
 def contact_update(request, contact_id=None):
     a = None
+    b = None
 
     if contact_id:
         a = get_object_or_404(Contact, id=contact_id)
@@ -183,7 +180,7 @@ def contact_birthday(request):
     upcoming_this_month = []
 
     if period == "today":
-        contacts = Contact.objects.filter(
+        contacts = Contact.objects.filter( # noqa
             birthdate__month=current_month,
             birthdate__day=current_day,
             user=request.user,
@@ -193,7 +190,7 @@ def contact_birthday(request):
         end_date = start_date + timedelta(days=6)
         current_year = today.year
 
-        contacts = Contact.objects.filter(
+        contacts = Contact.objects.filter( # noqa
             Q(birthdate__year=current_year) &
             Q(birthdate__month=start_date.month) | Q(birthdate__month=end_date.month),
             Q(birthdate__day__gte=start_date.day) & Q(birthdate__day__lte=end_date.day),
@@ -201,17 +198,17 @@ def contact_birthday(request):
         )
 
     elif period == "month":
-        passed_this_year = Contact.objects.filter(
+        passed_this_year = Contact.objects.filter( # noqa
             birthdate__month=current_month,
             birthdate__day__lt=current_day,
             user=request.user,
         )
-        today_birthdays = Contact.objects.filter(
+        today_birthdays = Contact.objects.filter( # noqa
             birthdate__month=current_month,
             birthdate__day=current_day,
             user=request.user,
         )
-        upcoming_this_month = Contact.objects.filter(
+        upcoming_this_month = Contact.objects.filter( # noqa
             birthdate__month=current_month,
             birthdate__day__gt=current_day,
             user=request.user,
@@ -230,4 +227,32 @@ def contact_birthday(request):
     return render(request, "app_contacts/contact_birthday.html", context=context)
 
 
+@login_required
+def calendar(request):
+    year = request.GET.get('year')
+    month = request.GET.get('month')
 
+    today = datetime.now()
+    day_today = today.day
+
+    if month is None or year is None:
+        year = today.year
+        month = today.month
+
+    month = int(month)
+    year = int(year)
+
+    cal_date = monthcalendar(year, month)
+
+    birthday_contacts = Contact.objects.filter( # noqa
+        user=request.user,
+        birthdate__month=month,
+        birthdate__year__lte=year
+    )
+    context = {
+        'day_today': day_today,
+        'calendar': cal_date,
+        'birthday_contacts': birthday_contacts
+    }
+
+    return render(request, 'app_contacts/calendar.html', context=context)
