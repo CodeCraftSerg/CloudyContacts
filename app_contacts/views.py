@@ -1,15 +1,16 @@
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.template.backends import django
 from django.urls import reverse
 from django.db.models import Q
-from django.template.defaultfilters import date as django_date_filter
-from django.db.models.functions import ExtractMonth, ExtractDay, ExtractWeekDay
+
 
 from datetime import datetime, timedelta
+from calendar import monthcalendar
+from dateutil.relativedelta import relativedelta
 
 from app_contacts.forms import ContactForm, AddressForm
 from app_contacts.models import Contact, Address
@@ -190,11 +191,15 @@ def contact_birthday(request):
     elif period == "week":
         start_date = today - timedelta(days=today.weekday())
         end_date = start_date + timedelta(days=6)
+        current_year = today.year
+
         contacts = Contact.objects.filter(
-            Q(birthdate__month=start_date.month, birthdate__day__gte=start_date.day)
-            | Q(birthdate__month=end_date.month, birthdate__day__lte=end_date.day),
-            user=request.user,
+            Q(birthdate__year=current_year) &
+            Q(birthdate__month=start_date.month) | Q(birthdate__month=end_date.month),
+            Q(birthdate__day__gte=start_date.day) & Q(birthdate__day__lte=end_date.day),
+            user=request.user
         )
+
     elif period == "month":
         passed_this_year = Contact.objects.filter(
             birthdate__month=current_month,
@@ -223,3 +228,6 @@ def contact_birthday(request):
         "birthday_contacts": contacts,
     }
     return render(request, "app_contacts/contact_birthday.html", context=context)
+
+
+
