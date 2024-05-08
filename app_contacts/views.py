@@ -1,10 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.template.backends import django
-from django.urls import reverse
 from django.db.models import Q
 from datetime import datetime, timedelta
 

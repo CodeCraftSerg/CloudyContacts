@@ -14,19 +14,25 @@
             {% csrf_token %}
             <div class="fields">
                 <div class="field half">
-                    <label for="file_description">Description</label>
+                    <label class="form-label">Description</label>
                     {{ form.file_description }}
                 </div>
-                <div class="field half">
-                    <label for="file">File</label>
-                    {{ form.filepath }}
-                </div>
+            </div>
+            <div class="field half">
+                <label class="button">
+                    Choose a file
+                    <input type="file" name="filepath" style="display: none;">
+                </label>
+                <!--<label class="form-label">File</label>
+                {{ form.filepath }}-->
             </div>
             <ul class="actions">
                 <li>
-                    <button type="submit" class="button">Upload</button>
+                    <button class="button submit">Upload</button>
                 </li>
             </ul>
+        </form>
+
     </div>
 </section>
 
