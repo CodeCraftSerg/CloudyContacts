@@ -5,24 +5,84 @@ from datetime import datetime
 import os
 
 
-CYRILLIC_SYMBOLS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяєіїґ'
-TRANSLATION = ("a", "b", "v", "g", "d", "e", "e", "j", "z", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "f", "h", "ts", "ch", "sh", "sch", "", "y", "", "e", "yu", "u", "ja", "je", "ji", "g")
+CYRILLIC_SYMBOLS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяєіїґ"
+TRANSLATION = (
+    "a",
+    "b",
+    "v",
+    "g",
+    "d",
+    "e",
+    "e",
+    "j",
+    "z",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "r",
+    "s",
+    "t",
+    "u",
+    "f",
+    "h",
+    "ts",
+    "ch",
+    "sh",
+    "sch",
+    "",
+    "y",
+    "",
+    "e",
+    "yu",
+    "u",
+    "ja",
+    "je",
+    "ji",
+    "g",
+)
 
-image_files = {'.jpeg', '.png', '.jpg', '.svg', '.bmp', '.ico'}
-video_files = {'.mp4', '.mov', '.webm', '.avi', 'mkv', '.wmv', '.flv'}
-audio_files = {'.mp3', '.wav', '.m4a', '.aiff', '.ogg', '.cda'}
-document_files = {'.docx', '.doc', '.pptx', '.xlsx', '.html', '.htm', '.html5', '.txt', '.ini', '.xml', '.ppt', '.py', '.md', '.toml', 'yml', '.cpp', '.h', '.java', '.css', '.js', '.csv'}
-archive_files = {'.rar', '.rar4', '.zip', '.tar', '.bz2', '.7z', '.apk', '.dmg', '.jar'}
+image_files = {".jpeg", ".png", ".jpg", ".svg", ".bmp", ".ico", ".gif"}
+video_files = {".mp4", ".mov", ".webm", ".avi", "mkv", ".wmv", ".flv"}
+audio_files = {".mp3", ".wav", ".m4a", ".aiff", ".ogg", ".cda"}
+document_files = {
+    ".docx",
+    ".doc",
+    ".pptx",
+    ".xlsx",
+    ".html",
+    ".htm",
+    ".html5",
+    ".txt",
+    ".ini",
+    ".xml",
+    ".ppt",
+    ".py",
+    ".md",
+    ".toml",
+    "yml",
+    ".cpp",
+    ".h",
+    ".java",
+    ".css",
+    ".js",
+    ".csv",
+}
+archive_files = {".rar", ".rar4", ".zip", ".tar", ".bz2", ".7z", ".apk", ".dmg", ".jar"}
 other_files = {}
 
 
 FILE_TYPES = {
-    'image': image_files,
-    'video': video_files,
-    'audio': audio_files,
-    'document': document_files,
-    'archive': archive_files,
-    'other': other_files,
+    "image": image_files,
+    "video": video_files,
+    "audio": audio_files,
+    "document": document_files,
+    "archive": archive_files,
+    "other": other_files,
 }
 
 
@@ -45,7 +105,7 @@ def get_file_type(filename):
     for file_type, extensions in FILE_TYPES.items():
         if extension in extensions:
             return file_type
-    return 'other'
+    return "other"
 
 
 def update_filename(instance, filename):
@@ -61,7 +121,7 @@ def update_filename(instance, filename):
     """
     filepath = Path(filename)
     now = datetime.now().strftime("%Y%m%d-%H%M")
-    filename = f'{now}_{filepath.name}'
+    filename = f"{now}_{filepath.name}"
     type_id = get_file_type(filepath.name)
     return os.path.join(type_id, filename)
 
@@ -78,12 +138,15 @@ class UserFile(models.Model):
     filename (CharField): The name of the file.
     file_type (CharField): The type of file, determined automatically by the system.
     """
+
     filepath = models.FileField()
     file_description = models.CharField(max_length=255, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, related_name='files', on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(
+        User, related_name="files", on_delete=models.CASCADE, null=True
+    )
     filename = models.CharField(max_length=255, null=True)
-    file_type = models.CharField('File type', max_length=50, default='other')
+    file_type = models.CharField("File type", max_length=50, default="other")
 
     def save(self, **kwargs):
         """
