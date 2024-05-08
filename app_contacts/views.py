@@ -4,7 +4,6 @@ from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
-
 from datetime import datetime, timedelta
 from calendar import monthcalendar
 
@@ -194,7 +193,7 @@ def contact_birthday(request):
             Q(birthdate__year=current_year) &
             Q(birthdate__month=start_date.month) | Q(birthdate__month=end_date.month),
             Q(birthdate__day__gte=start_date.day) & Q(birthdate__day__lte=end_date.day),
-            user=request.user
+            user=request.user,
         )
 
     elif period == "month":

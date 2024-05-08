@@ -5,41 +5,48 @@
 
 <section class="wrapper style1 fade-up">
     <div class="inner">
+        <h2>Your other files</h2>
+        <em>Powered by</em>
+        <img src="{% static 'app_files/cloudinary.svg' %}" style="width: 20px; height: 20px;"/>
+
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h2 style="margin: 0;">Your other files</h2>
-            <a href="{% url 'app_files:upload_files' %}" class="button" style="margin-right: 30px;">
-                <i class="fa-solid fa-file-arrow-up" style="margin-right: 8px;"></i>Upload File
+            <a href="{% url 'app_files:upload_files' %}" class="button" style="margin-left: 30px;">
+                <i class="fa-solid fa-file-arrow-up" style="margin-left: 8px;"></i>Upload Your File
             </a>
         </div>
-        <div class="table-wrapper", style="margin-top: 40px">
+        <hr/>
+
+        <div class="table-wrapper" , style="margin-top: 40px">
             <table class="alt">
                 <thead>
-                    <tr>
-                        <th>Description</th>
-                        <th>Download Link</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
+                <tr>
+                    <th>Description</th>
+                    <th>Download Link</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
                 </thead>
                 <tbody>
-                    {% for f in other_list %}
-                    <tr>
-                        <td>{{ f.description }}</td>
-                        <td><a href="{{ f.filepath.url }}">{{ f.filename }}</a></td>
-                        <td><a href="{% url 'app_files:edit_description' f.id %}" class="button">Edit</a></td>
-                        <td><a href="{% url 'app_files:delete_file' f.id %}" class="button">Delete</a></td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="4">No other files available.</td>
-                    </tr>
-                    {% endfor %}
+                {% for f in other_list %}
+                <tr>
+                    <td>{{ f.description }}</td>
+                    <td style="vertical-align: middle; text-align: center;"><a href="{{ f.filepath.url }} " class="button">download</a></td>
+                    <td><a href="{% url 'app_files:edit_description' f.id %}" class="button">Edit</a></td>
+                    <td><a href="{% url 'app_files:delete_file' f.id %}" class="button">Delete</a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No other files available.</td>
+                </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </div>
-    <a href="{% url 'app_files:files_page' %}" class="button" style="margin-right: 30px;">
+        <a href="{% url 'app_files:files_page' %}" class="button" style="margin-right: 30px;">
             <i class="fa fa-angle-double-left" aria-hidden="true"></i> All Files
         </a>
+
     </div>
 </section>
+
 {% endblock %}

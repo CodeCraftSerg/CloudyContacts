@@ -5,19 +5,27 @@
 
 <section class="wrapper style1 fade-up">
     <div class="inner">
-        <h2>Edit File Description</h2>
+        <h2>Edit File</h2>
+        <a href="/app_files" class="button small">to the files page</a>
+        <p></p>
+
         <form method="post">
             {% csrf_token %}
             <div class="fields">
                 <div class="field">
-                    <label for="file_description">Description</label>
-                    <input type="text" name="file_description" id="file_description" value="{{ file.file_description }}" class="form-control" />
+                    <label for="file_description">Description:</label>
+                    <input type="text" name="file_description" id="file_description" value="{{ file.file_description }}"
+                           class="form-control"/>
                 </div>
             </div>
             <ul class="actions">
-                <li><button type="submit" class="button primary">Save Changes</button></li>
+                <li>
+                    <button type="submit" class="button primary">Save Changes</button>
+                </li>
             </ul>
         </form>
+
     </div>
 </section>
+
 {% endblock %}

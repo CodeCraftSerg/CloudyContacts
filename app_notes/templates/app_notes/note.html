@@ -30,7 +30,7 @@
 
                     <div class="col-6">
                         <label> Select Tags:
-                            <select name="tags" multiple="multiple" size="5" required>
+                            <select name="tags" multiple="multiple" size="5">
                                 {% for tag in tags %}
                                 <option value="{{tag.name}}">{{tag.name}}</option>
                                 {% endfor %}

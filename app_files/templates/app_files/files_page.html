@@ -5,32 +5,41 @@
 
 <section id="files_page" class="wrapper style1 fade-up">
     <div class="inner">
+        <h2>Manage Your Files</h2>
+        <em>Powered by</em>
+            <img src="{% static 'app_files/cloudinary.svg' %}" style="width: 20px; height: 20px;"/>
+
+
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h2 style="margin: 0;">Manage Your Files</h2>
-            <a href="{% url 'app_files:upload_files' %}" class="button" style="margin-right: 30px;">
-                <i class="fa-solid fa-file-arrow-up" style="margin-right: 8px;"></i>Upload File
+            <a href="{% url 'app_files:upload_files' %}" class="button" style="margin-left: 30px;">
+                <i class="fa-solid fa-file-arrow-up" style="margin-left: 8px;"></i>Upload Your File
             </a>
         </div>
-    <div class="files-content" style="margin: 60px; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 15px;">
-        <button onclick="location.href='{% url 'app_files:image_files' %}'" class="button">
-            <i class="fa-solid fa-file-image" style="font-size:36px; color: #8224e3;"></i> Images
-        </button>
-        <button onclick="location.href='{% url 'app_files:docs_files' %}'" class="button">
-            <i class="fa fa-file-text" style="font-size:36px; color: #8224e3;"></i> Documents
-        </button>
-        <button onclick="location.href='{% url 'app_files:audio_files' %}'" class="button">
-            <i class="fa-solid fa-file-audio" style="font-size:36px; color: #8224e3;"></i> Audios
-        </button>
-        <button onclick="location.href='{% url 'app_files:video_files' %}'" class="button">
-            <i class="fa-solid fa-file-video" style="font-size:36px; color: #8224e3;"></i> Videos
-        </button>
-        <button onclick="location.href='{% url 'app_files:archives' %}'" class="button">
-            <i class="fa-solid fa-file-binary" style="font-size:36px; color: #8224e3;"></i> Archives
-        </button>
-        <button onclick="location.href='{% url 'app_files:other_files' %}'" class="button">
-            <i class="fa-solid fa-file" style="font-size:36px; color: #8224e3;"></i> Others
-        </button>
-    </div>
+        <hr/>
+
+        <h3>Preview uploaded files:</h3>
+        <div class="files-content"
+             style="margin: 60px; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 15px;">
+            <button onclick="location.href='{% url 'app_files:image_files' %}'" class="button">
+                <i class="fa-solid" style="font-size:36px; color: #8224e3;"></i> Images
+            </button>
+            <button onclick="location.href='{% url 'app_files:docs_files' %}'" class="button">
+                <i class="fa fa-file-text" style="font-size:36px; color: #8224e3;"></i> Documents
+            </button>
+            <button onclick="location.href='{% url 'app_files:audio_files' %}'" class="button">
+                <i class="fa-solid" style="font-size:36px; color: #8224e3;"></i> Audios
+            </button>
+            <button onclick="location.href='{% url 'app_files:video_files' %}'" class="button">
+                <i class="fa-solid" style="font-size:36px; color: #8224e3;"></i> Videos
+            </button>
+            <button onclick="location.href='{% url 'app_files:archives' %}'" class="button">
+                <i class="fa-solid" style="font-size:36px; color: #8224e3;"></i> Archives
+            </button>
+            <button onclick="location.href='{% url 'app_files:other_files' %}'" class="button">
+                <i class="fa-solid" style="font-size:36px; color: #8224e3;"></i> Others
+            </button>
+        </div>
+
     </div>
 </section>
 <style>
@@ -38,14 +47,17 @@
         display: flex;
         align-items: center;
     }
+
     .button i {
         margin-right: 10px;
         margin-top: 10px;
     }
+
     .button:hover {
         background-color: #6f1fa1;
     }
 </style>
+
 {% endblock %}
 
 

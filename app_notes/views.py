@@ -53,7 +53,7 @@ def note(request):
             for tag_ in choice_tags.iterator():
                 new_note.tag.add(tag_)
 
-            return redirect(to="app_notes:note")
+            return redirect(to="app_notes:notes")
         else:
             return render(request, "app_notes/note.html", {"tags": tags, "form": form})
 

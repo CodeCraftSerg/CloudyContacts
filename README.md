@@ -7,8 +7,9 @@ CloudyContacts is a web application built with the Django framework that provide
 
 ## Requirements
 API keys are required to run this application. Obtain the necessary keys at the addresses below:
-* Create an account on **[openweathermap.org](https://openweathermap.org/)**, then go to **[openweathermap.org/api_keys](https://home.openweathermap.org/api_keys)** and create an API key for access.
+* Create an account on **[openweathermap.org](https://openweathermap.org)**, then go to **[openweathermap.org/api_keys](https://home.openweathermap.org/api_keys)** and create an API key for access.
 * Create an account on **[abstractapi.com](https://www.abstractapi.com)**. Then, go to **[abstractapi.com/api](https://app.abstractapi.com/api/ip-geolocation/tester)** and create an API key for access.
+* Create an account on **[cloudinary.com](https://cloudinary.com)**. Then, go to settings page and generate your Access Keys.
 
 ## Run Locally
 ```bash
@@ -22,6 +23,9 @@ Now open the .env.example file and fill in the fields for the variables you need
 * SECRET_KEY=your-django-secret-key
 * API_WEATHER_KEY=your-weather-key
 * ABSTRACT_API_KEY=your-abstract-key
+* CLOUDINARY_NAME=your-cloudinary-name
+* CLOUDINARY_API_KEY=your-cloudinary-api-key
+* CLOUDINARY_API_SECRET=your-cloudinary-api-secret
 * DB_ENGINE=django.db.backends.postgresql_psycopg2
 * DB_USER=your-username
 * DB_PASSWORD=your-password

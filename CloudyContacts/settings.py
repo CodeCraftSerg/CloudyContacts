@@ -30,23 +30,36 @@ environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = env("DEBUG")
-DEBUG = False
+DEBUG = env("DEBUG")
+# DEBUG = False
+# DEBUG = True
 
 ALLOWED_HOSTS = [
     "DJANGO_ALLOWED_HOSTS",
     "127.0.0.1",
-    "cloudy-contacts-grey-50db466b.koyeb.app",
+    "localhost",
+    "0.0.0.0",
+    "web-pzjikg8utavf.up-de-fra1-k8s-1.apps.run-on-seenode.com",
+    "cloudy-contacts-grey-edede0fc.koyeb.app",
+    "api.openweathermap.org",
+    "ipgeolocation.abstractapi.com",
+    "suspilne.media/sport",
+    "suspilne.media",
+    "suspilne.media/culture",
+    "api.ipify.org",
 ]
 # ALLOWED_HOSTS = os.getenv(
 #     "DJANGO_ALLOWED_HOSTS",
 #     "localhost,127.0.0.1,[::1]",
-#     "https://cloudy-contacts-grey-1bd53251.koyeb.app/",
+#     "cloudy-contacts-grey-edede0fc.koyeb.app",
 # ).split(",")
 
-CSRF_TRUSTED_ORIGINS = ["https://cloudy-contacts-grey-50db466b.koyeb.app"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://web-pzjikg8utavf.up-de-fra1-k8s-1.apps.run-on-seenode.com",
+    "https://cloudy-contacts-grey-edede0fc.koyeb.app/",
+]
 # CSRF_TRUSTED_ORIGINS = os.getenv(
-#     "https://cloudy-contacts-grey-1bd53251.koyeb.app/"
+#     ""
 # ).split(",")
 
 # Application definition
@@ -70,6 +83,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django_session_timeout.middleware.SessionTimeoutMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -78,6 +92,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "CloudyContacts.urls"
+
+SESSION_EXPIRE_SECONDS = 3600  # 1800 - Expire after 30 minutes
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
+SESSION_TIMEOUT_REDIRECT = "/users/signin"  # Sign In URL
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Invalid session
 
 TEMPLATES = [
     {
@@ -163,7 +182,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -203,3 +221,12 @@ EMAIL_USE_TLS = False
 EMAIL_HOST_USER = env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
+
+
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": env("CLOUDINARY_NAME"),
+    "API_KEY": env("CLOUDINARY_API_KEY"),
+    "API_SECRET": env("CLOUDINARY_API_SECRET"),
+}
+
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.RawMediaCloudinaryStorage"
