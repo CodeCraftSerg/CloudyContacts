@@ -6,11 +6,7 @@ from django.contrib import messages
 from django.template.backends import django
 from django.urls import reverse
 from django.db.models import Q
-
-
 from datetime import datetime, timedelta
-from calendar import monthcalendar
-from dateutil.relativedelta import relativedelta
 
 from app_contacts.forms import ContactForm, AddressForm
 from app_contacts.models import Contact, Address
@@ -194,10 +190,10 @@ def contact_birthday(request):
         current_year = today.year
 
         contacts = Contact.objects.filter(
-            Q(birthdate__year=current_year) &
-            Q(birthdate__month=start_date.month) | Q(birthdate__month=end_date.month),
+            Q(birthdate__year=current_year) & Q(birthdate__month=start_date.month)
+            | Q(birthdate__month=end_date.month),
             Q(birthdate__day__gte=start_date.day) & Q(birthdate__day__lte=end_date.day),
-            user=request.user
+            user=request.user,
         )
 
     elif period == "month":
@@ -228,6 +224,3 @@ def contact_birthday(request):
         "birthday_contacts": contacts,
     }
     return render(request, "app_contacts/contact_birthday.html", context=context)
-
-
-
