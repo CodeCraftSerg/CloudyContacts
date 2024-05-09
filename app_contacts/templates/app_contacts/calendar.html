@@ -1,0 +1,67 @@
+{% extends 'app_main/base.html' %}
+
+{% block contacts %}
+{% load static %}
+
+<section id="five" class="wrapper style1 fade-up">
+    <div class="inner">
+        <h2>Calendar: {% now "M" %} </h2>
+        <table style="border-collapse:collapse;">
+        <thead>
+            <tr>
+                <th style="width:14.3%">Mon</th>
+                <th style="width:14.3%">Tue</th>
+                <th style="width:14.3%">Wed</th>
+                <th style="width:14.3%">Thur</th>
+                <th style="width:14.3%">Fri</th>
+                <th style="width:14.3%">Sat</th>
+                <th style="width:14.3%">Sun</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for week in calendar %}
+        <tr>
+            {% for day in week %}
+                {% if day != 0 %}
+                    <td>
+                        {% if day == day_today %}
+                            <span style="color:#AAA000; font-weight:bold">{{ day }} today</span>
+                        {% elif day < day_today %}
+                            {{ day }}
+                        {% else %}
+                            {{ day }}
+                        {% endif %}
+                        {% for contact in birthday_contacts %}
+                            {% if day == contact.birthdate.day %}
+                                {% if day >= day_today %}
+                                    <ul class="birthday-icon">
+                                {% else %}
+                                    <ul class="birthday-icon-pass">
+                                {% endif %}
+                                        <li><a href="/app_contacts/contact_details/{{ contact.id }}/">
+                                            {{ contact.name }}
+                                        </a></li>
+                                    </ul>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+
+    </table>
+
+        <button class="button small" onclick="goBack()">return</button>
+
+    </div>
+</section>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+{% endblock %}

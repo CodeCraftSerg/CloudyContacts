@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 
 from . import views
 
@@ -12,4 +12,6 @@ urlpatterns = [
     path("delete_contact/<int:contact_id>/", views.delete_contact, name="delete_contact"),
     path("contact_update/<int:contact_id>/", views.contact_update, name="contact_update"),
     path("contact_birthday/", views.contact_birthday, name="contact_birthday"),
+    path("calendar/", views.calendar, name="calendar"),
+
 ]

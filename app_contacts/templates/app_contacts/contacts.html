@@ -5,23 +5,6 @@
 
 {% if user.is_authenticated %}
 
-<style>
-    /* Визначте свій власний клас для значка списку */
-    .custom-icon {
-        list-style-image: url('{% static ' app_main/images/contact-ico-small.svg ' %}'); /* Вкажіть шлях до вашого значка */
-    }
-
-    /* Задайте розміри для зображення */
-    .custom-icon img {
-        width: 20px; /* Задайте ширину, наприклад, 20px */
-        height: 20px; /* Задайте висоту, наприклад, 20px */
-    }
-
-    .custom-icon li {
-        padding-left: 5px; /* Задайте значення, яке вам потрібно */
-    }
-</style>
-
 <section id="five" class="wrapper style1 fade-up">
     <div class="inner">
         <h2>Contacts</h2>
