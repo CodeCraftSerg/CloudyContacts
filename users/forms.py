@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.forms import CharField, TextInput, EmailField, EmailInput, PasswordInput
+from users.validators import validate_email
 
 
 class RegisterForm(UserCreationForm):
@@ -12,6 +13,7 @@ class RegisterForm(UserCreationForm):
     )
     email = EmailField(
         max_length=320,
+        validators=[validate_email],
         required=True,
         widget=EmailInput(attrs={"class": "form-control"}),
     )
